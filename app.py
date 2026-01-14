@@ -11,6 +11,14 @@ import json
 import pickle
 warnings.filterwarnings('ignore')
 
+# ==================== COMPATIBILITY HELPER ====================
+def safe_rerun():
+    """Handle both old and new Streamlit rerun methods"""
+    try:
+        st.rerun()  # New method (Streamlit >= 1.28.0)
+    except AttributeError:
+        st.experimental_rerun()  # Old method
+
 # ==================== DEPLOYMENT CONFIGURATION ====================
 # Environment variables for deployment security
 DEPLOYMENT_MODE = os.environ.get('DEPLOYMENT_MODE', 'development')
@@ -554,7 +562,7 @@ def show_login_page():
                 
                 st.success(f"Welcome, {username}!")
                 time.sleep(1)
-                st.experimental_rerun()
+                safe_rerun()  # CORRECTED: Using safe_rerun() instead of st.experimental_rerun()
             else:
                 st.error(f"Login failed: {message}")
     
@@ -618,7 +626,7 @@ def logout():
     for key, value in new_state.items():
         st.session_state[key] = value
     
-    st.experimental_rerun()
+    safe_rerun()  # CORRECTED: Using safe_rerun() instead of st.experimental_rerun()
 
 # ==================== SECURITY MIDDLEWARE ====================
 # Check session timeout on every run
@@ -755,7 +763,7 @@ with st.sidebar:
         st.session_state.text_column = None
         st.session_state.file_name = None
         st.session_state.data_loaded = False
-        st.experimental_rerun()
+        safe_rerun()  # CORRECTED: Using safe_rerun() instead of st.experimental_rerun()
     
     st.markdown("---")
     
@@ -981,7 +989,7 @@ with tab1:
                         }
                         st.session_state.analysis_history.append(analysis_event)
                         
-                        st.experimental_rerun()
+                        safe_rerun()  # CORRECTED: Using safe_rerun() instead of st.experimental_rerun()
                 
             except Exception as e:
                 st.error(f"Error loading file: {str(e)}")
