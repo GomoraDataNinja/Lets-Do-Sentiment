@@ -166,7 +166,7 @@ st.markdown(f"""
         font-weight: 800;
         color: white;
         text-align: center;
-        margin-bottom: 2rem;
+        margin-bottom: 0.5rem;
         padding: 1.5rem;
         background: linear-gradient(90deg, rgba(0, 100, 0, 0.3), rgba(206, 17, 38, 0.3));
         border-radius: 15px;
@@ -304,10 +304,32 @@ st.markdown(f"""
     .stProgress > div > div > div > div {{
         background: linear-gradient(90deg, {COLORS['primary']}, {COLORS['secondary']}, {COLORS['accent']});
     }}
+    
+    /* Welcome Message Styles */
+    .welcome-text {{
+        color: #FFFFFF !important;
+        font-size: 1.2rem !important;
+        max-width: 800px;
+        margin: 0 auto 2rem auto;
+        line-height: 1.6;
+        text-align: center;
+        font-weight: 300;
+    }}
 </style>
 """, unsafe_allow_html=True)
 
 st.markdown('<h1 class="main-header"><span class="zimbabwe-flag"></span>Sentiment Analysis Dashboard</h1>', unsafe_allow_html=True)
+
+# WELCOME MESSAGE RIGHT AFTER MAIN HEADING - WITH WHITE TEXT
+st.markdown(f"""
+<div style="text-align: center; padding: 0 2rem 2rem 2rem;">
+    <p class="welcome-text">
+        Analyze customer feedback and reviews across multiple Zimbabwean languages with powerful sentiment analysis tools.
+    </p>
+    
+        
+        
+""", unsafe_allow_html=True)
 
 # Session state for caching
 if 'processed_data' not in st.session_state:
@@ -389,8 +411,8 @@ with st.sidebar:
     # Performance Tips Card
     st.markdown(f"""
     <div class="perf-card" style="margin-top: 2rem;">
-        <div style="color: {COLORS['primary']}; font-weight: bold; margin-bottom: 0.5rem;">💡 Performance Tips:</div>
-        <ul style="margin: 0; padding-left: 1.2rem; color: {COLORS['text_light']}; font-size: 0.8rem;">
+        <div style="color: {COLORS['secondary']}; font-weight: bold; margin-bottom: 0.5rem;">💡 Performance Tips:</div>
+        <ul style="margin: 0; padding-left: 1.2rem; color:color: #111827; font-size: 0.8rem;">
             <li>Use <strong>CSV</strong> format for fastest loading</li>
             <li><strong>TextBlob mode</strong> for large datasets</li>
             <li>Increase <strong>batch size</strong> for speed</li>
@@ -858,101 +880,18 @@ if st.session_state.analysis_complete:
         st.markdown("</div>", unsafe_allow_html=True)
 
 else:
-    # Welcome screen with beautiful cards
-    st.markdown(f"""
-    <div class="zimbabwe-theme">
-        <div style="text-align: center; margin-bottom: 2rem;">
-            <h1 style="color: {COLORS['secondary']}; margin-bottom: 0.5rem;">⚡ Welcome to Sentiment Analysis Dashboard</h1>
-            <p style="color: {COLORS['text']}; font-size: 1.1rem; max-width: 800px; margin: 0 auto;">
-            Analyze customer sentiment across Zimbabwean languages with blazing fast performance
+    # Simple upload prompt when no file is uploaded
+    if uploaded_file is None:
+        st.markdown(f"""
+        <div style="text-align: center; padding: 3rem; background: linear-gradient(135deg, rgba(0, 100, 0, 0.1), rgba(206, 17, 38, 0.1)); 
+                    border-radius: 10px; border: 2px dashed rgba(255, 215, 0, 0.3); margin-top: 2rem;">
+            <div style="font-size: 4rem; margin-bottom: 1rem; color: white;">📁</div>
+            <h3 style="color: white; margin: 0 0 1rem 0; font-size: 1.5rem;">Ready to Analyze</h3>
+            <p style="color: rgba(255, 255, 255, 0.9); margin: 0; font-size: 1.1rem; max-width: 600px; margin: 0 auto;">
+                Upload your CSV or Excel file above to begin sentiment analysis
             </p>
         </div>
-        
-        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 2rem;">
-            <div class="card">
-                <div class="card-header"> Zimbabwean Languages</div>
-                <div class="card-content">
-                    <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-top: 1rem;">
-                        <span class="language-badge lang-sn">SHONA (ChiShona)</span>
-                        <span class="language-badge lang-nd">NDEBELE (isiNdebele)</span>
-                        <span class="language-badge lang-to">TONGA (ChiTonga)</span>
-                        <span class="language-badge lang-en">ENGLISH</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="card">
-                <div class="card-header">🚀 Fast Performance</div>
-                <div class="card-content">
-                    <div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem;">
-                        <div>
-                            <div style="font-size: 1.8rem; color: {COLORS['primary']}; font-weight: 800;">10,000+</div>
-                            <div style="color: {COLORS['text_light']}; font-size: 0.9rem;">reviews per minute</div>
-                        </div>
-                        <div>
-                            <div style="font-size: 1.8rem; color: {COLORS['accent']}; font-weight: 800;">99%</div>
-                            <div style="color: {COLORS['text_light']}; font-size: 0.9rem;">accuracy maintained</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="card">
-                <div class="card-header">📊 Rich Insights</div>
-                <div class="card-content">
-                    <ul style="color: {COLORS['text']}; margin: 1rem 0 0 0; padding-left: 1.2rem;">
-                        <li>Sentiment analysis</li>
-                        <li>Language detection</li>
-                        <li>Keyword extraction</li>
-                        <li>Performance metrics</li>
-                        <li>Export capabilities</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        
-        <div class="card">
-            <div class="card-header">🎯 How to Get Started</div>
-            <div class="card-content">
-                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; text-align: center; margin-top: 1rem;">
-                    <div>
-                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">1️⃣</div>
-                        <div style="font-weight: 600; color: {COLORS['primary']};">Upload</div>
-                        <div style="font-size: 0.9rem; color: {COLORS['text_light']};">CSV or Excel file</div>
-                    </div>
-                    <div>
-                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">2️⃣</div>
-                        <div style="font-weight: 600; color: {COLORS['primary']};">Configure</div>
-                        <div style="font-size: 0.9rem; color: {COLORS['text_light']};">Settings in sidebar</div>
-                    </div>
-                    <div>
-                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">3️⃣</div>
-                        <div style="font-weight: 600; color: {COLORS['primary']};">Analyze</div>
-                        <div style="font-size: 0.9rem; color: {COLORS['text_light']};">Click start button</div>
-                    </div>
-                    <div>
-                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">4️⃣</div>
-                        <div style="font-weight: 600; color: {COLORS['primary']};">Export</div>
-                        <div style="font-size: 0.9rem; color: {COLORS['text_light']};">Download results</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div style="margin-top: 2rem; padding: 1.5rem; background: linear-gradient(135deg, rgba(0, 100, 0, 0.15), rgba(206, 17, 38, 0.1)); border-radius: 10px;">
-            <div style="display: flex; align-items: center; gap: 1rem;">
-                <div style="font-size: 2rem;">💡</div>
-                <div>
-                    <h4 style="color: {COLORS['secondary']}; margin: 0;">Pro Tip for Best Performance</h4>
-                    <p style="color: {COLORS['text']}; margin: 0.5rem 0 0 0;">
-                    Use <strong>TextBlob (Fastest)</strong> mode with <strong>batch size 500</strong> for processing large datasets. 
-                    Enable caching for repeated analyses on the same data.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
+        """, unsafe_allow_html=True)
 
 # Beautiful footer
 st.markdown(f"""
