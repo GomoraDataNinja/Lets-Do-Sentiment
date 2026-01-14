@@ -1,1 +1,8 @@
-nltk
+streamlit>=1.28
+pandas>=1.5
+numpy>=1.23
+requests>=2.28
+nltk>=3.8
+textblob>=0.17
+plotly>=5.17
+langdetect>=1.0.9
