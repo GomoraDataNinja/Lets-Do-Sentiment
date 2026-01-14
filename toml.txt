@@ -1,4 +1,5 @@
-APP_PASSWORD = "your_secure_password_here"
+APP_PASSWORD = "Sentiment2026"
 ALLOWED_USERS = "admin,analyst,user"
 ADMIN_USERS = "admin"
 MAX_FILE_SIZE_MB = 10
+
