@@ -140,7 +140,7 @@ SENTIMENT_COLORS = {
     'Negative': "#EA4335",
 }
 
-# Enhanced CSS for deployment
+# Enhanced CSS for deployment with FIXED text visibility
 st.markdown(f"""
 <style>
     /* Base styles */
@@ -229,19 +229,21 @@ st.markdown(f"""
         line-height: 1.5;
     }}
     
-    /* Dashboard components */
+    /* FIXED: Dashboard components - Text visibility improvements */
     .metric-card {{
         background: {COLORS['card']};
         border: 1px solid {COLORS['neutral']}30;
         border-radius: 10px;
-        padding: 22px;
+        padding: 18px;
         text-align: center;
-        height: 150px;
+        min-height: 120px;
         display: flex;
         flex-direction: column;
         justify-content: center;
         transition: all 0.3s ease;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        word-wrap: break-word;
+        overflow-wrap: break-word;
     }}
     
     .metric-card:hover {{
@@ -251,26 +253,31 @@ st.markdown(f"""
     }}
     
     .metric-value {{
-        font-size: 38px;
+        font-size: 32px;
         font-weight: 400;
         color: {COLORS['text']};
-        margin: 10px 0;
+        margin: 8px 0;
         font-family: 'Google Sans Display', sans-serif;
+        line-height: 1.2;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }}
     
     .metric-label {{
-        font-size: 13px;
+        font-size: 12px;
         color: {COLORS['text_light']};
         text-transform: uppercase;
         letter-spacing: 0.8px;
         font-weight: 600;
+        margin-bottom: 5px;
+        line-height: 1.3;
     }}
     
     .g-card {{
         background: {COLORS['card']};
         border: 1px solid {COLORS['neutral']}30;
         border-radius: 12px;
-        padding: 28px;
+        padding: 24px;
         margin-bottom: 20px;
         box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
         transition: all 0.3s ease;
@@ -283,17 +290,19 @@ st.markdown(f"""
     .g-card-header {{
         display: flex;
         justify-content: space-between;
-        align-items: center;
-        margin-bottom: 24px;
+        align-items: flex-start;
+        margin-bottom: 20px;
         padding-bottom: 16px;
         border-bottom: 1px solid {COLORS['neutral']}20;
+        flex-wrap: wrap;
+        gap: 15px;
     }}
     
     .g-card-title {{
         font-size: 20px;
         font-weight: 500;
         color: {COLORS['text']};
-        margin: 0;
+        margin: 0 0 5px 0;
         display: flex;
         align-items: center;
         gap: 10px;
@@ -302,8 +311,9 @@ st.markdown(f"""
     .g-card-subtitle {{
         font-size: 14px;
         color: {COLORS['text_light']};
-        margin: 6px 0 0 0;
+        margin: 0;
         line-height: 1.5;
+        opacity: 0.9;
     }}
     
     /* Status indicators */
@@ -316,6 +326,7 @@ st.markdown(f"""
         font-size: 12px;
         font-weight: 600;
         letter-spacing: 0.3px;
+        white-space: nowrap;
     }}
     
     .status-active {{
@@ -375,11 +386,12 @@ st.markdown(f"""
     /* Buttons */
     .stButton > button {{
         border-radius: 8px;
-        padding: 12px 26px;
-        font-size: 14px;
+        padding: 10px 22px;
+        font-size: 13px;
         font-weight: 500;
         transition: all 0.3s ease;
         border: 1px solid transparent;
+        margin-top: 10px;
     }}
     
     .stButton > button:hover {{
@@ -387,18 +399,20 @@ st.markdown(f"""
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     }}
     
-    /* Export cards */
+    /* FIXED: Export cards - Better text visibility */
     .export-card {{
         text-align: center;
-        padding: 30px;
+        padding: 20px;
         border: 2px dashed {COLORS['neutral']}40;
         border-radius: 12px;
-        height: 240px;
+        min-height: 220px;
         display: flex;
         flex-direction: column;
         justify-content: center;
         transition: all 0.3s ease;
         background: {COLORS['background']};
+        word-wrap: break-word;
+        overflow-wrap: break-word;
     }}
     
     .export-card:hover {{
@@ -406,6 +420,32 @@ st.markdown(f"""
         background: {COLORS['primary']}08;
         transform: translateY(-2px);
         box-shadow: 0 6px 20px rgba(66, 133, 244, 0.1);
+    }}
+    
+    .export-icon {{
+        font-size: 42px;
+        margin-bottom: 16px;
+        color: {COLORS['primary']};
+    }}
+    
+    .export-title {{
+        font-weight: 600;
+        margin-bottom: 10px;
+        font-size: 18px;
+        color: {COLORS['text']};
+    }}
+    
+    .export-description {{
+        font-size: 13px;
+        color: {COLORS['text_light']};
+        margin-bottom: 20px;
+        line-height: 1.5;
+    }}
+    
+    .export-security {{
+        font-size: 11px;
+        color: {COLORS['text_light']};
+        margin-top: 10px;
     }}
     
     /* Security warnings */
@@ -441,6 +481,23 @@ st.markdown(f"""
         box-shadow: 0 0 0 2px {COLORS['primary']}20;
     }}
     
+    /* File upload section improvements */
+    .upload-section {{
+        padding: 25px;
+        background: {COLORS['background']};
+        border-radius: 10px;
+        border: 2px dashed {COLORS['neutral']}40;
+        text-align: center;
+        margin: 20px 0;
+    }}
+    
+    .upload-info {{
+        font-size: 14px;
+        color: {COLORS['text_light']};
+        margin-top: 10px;
+        line-height: 1.5;
+    }}
+    
     /* Hide Streamlit branding */
     #MainMenu {{visibility: hidden;}}
     footer {{visibility: hidden;}}
@@ -457,6 +514,64 @@ st.markdown(f"""
         font-weight: 600;
         background: {'#34A853' if DEPLOYMENT_MODE == 'production' else '#FBBC05'};
         color: white;
+    }}
+    
+    /* Better text visibility for data frames */
+    .stDataFrame {{
+        font-size: 13px;
+    }}
+    
+    /* Tab improvements */
+    .stTabs [data-baseweb="tab-list"] {{
+        gap: 2px;
+    }}
+    
+    .stTabs [data-baseweb="tab"] {{
+        font-size: 14px;
+        font-weight: 500;
+        padding: 12px 20px;
+    }}
+    
+    /* Better column spacing */
+    .stColumn {{
+        padding: 5px;
+    }}
+    
+    /* File uploader text visibility */
+    [data-testid="stFileUploader"] {{
+        font-size: 14px;
+    }}
+    
+    [data-testid="stFileUploader"] label {{
+        font-weight: 500;
+        color: {COLORS['text']};
+    }}
+    
+    /* Button text visibility */
+    button[kind="primary"] {{
+        font-weight: 600;
+        letter-spacing: 0.3px;
+    }}
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {{
+        .metric-value {{
+            font-size: 28px;
+        }}
+        
+        .export-card {{
+            min-height: 200px;
+            padding: 15px;
+        }}
+        
+        .stButton > button {{
+            padding: 8px 16px;
+            font-size: 12px;
+        }}
+        
+        .g-card {{
+            padding: 18px;
+        }}
     }}
 </style>
 """, unsafe_allow_html=True)
@@ -514,14 +629,14 @@ def show_login_page():
     st.markdown('<div class="google-logo">SA</div>', unsafe_allow_html=True)
     st.markdown(f'<h1 class="login-title">Sign in to {APP_NAME}</h1>', unsafe_allow_html=True)
     
-    login_subtitle = '''
+    login_subtitle = f'''
         <p class="login-subtitle">
             Enter your credentials to access the sentiment analysis dashboard.<br>
-            <span style="font-size: 12px; color: #9AA0A6;">
-                Deployment: <strong>{}</strong> | Version: {}
+            <span style="font-size: 12px; color: {COLORS['text_light']};">
+                Deployment: <strong>{DEPLOYMENT_MODE.upper()}</strong> | Version: {APP_VERSION}
             </span>
         </p>
-    '''.format(DEPLOYMENT_MODE.upper(), APP_VERSION)
+    '''
     st.markdown(login_subtitle, unsafe_allow_html=True)
     
     with st.form("login_form", clear_on_submit=True):
@@ -562,7 +677,7 @@ def show_login_page():
                 
                 st.success(f"Welcome, {username}!")
                 time.sleep(1)
-                safe_rerun()  # CORRECTED: Using safe_rerun() instead of st.experimental_rerun()
+                safe_rerun()
             else:
                 st.error(f"Login failed: {message}")
     
@@ -570,7 +685,7 @@ def show_login_page():
     st.markdown(f"""
         <div class="login-footer">
             <p style="margin-bottom: 8px;">© 2024 {APP_NAME}</p>
-            <div style="font-size: 11px; color: #5F6368;">
+            <div style="font-size: 11px; color: {COLORS['text_light']};">
                 <div style="display: flex; justify-content: center; gap: 20px; margin-bottom: 4px;">
                     <span>Version: {APP_VERSION}</span>
                     <span>Mode: {DEPLOYMENT_MODE}</span>
@@ -626,7 +741,7 @@ def logout():
     for key, value in new_state.items():
         st.session_state[key] = value
     
-    safe_rerun()  # CORRECTED: Using safe_rerun() instead of st.experimental_rerun()
+    safe_rerun()
 
 # ==================== SECURITY MIDDLEWARE ====================
 # Check session timeout on every run
@@ -763,7 +878,7 @@ with st.sidebar:
         st.session_state.text_column = None
         st.session_state.file_name = None
         st.session_state.data_loaded = False
-        safe_rerun()  # CORRECTED: Using safe_rerun() instead of st.experimental_rerun()
+        safe_rerun()
     
     st.markdown("---")
     
@@ -847,7 +962,7 @@ with col4:
             <div class="metric-label">Accuracy</div>
             <div class="metric-value">{accuracy}</div>
             <div style="font-size: 12px; color: {COLORS['success']}; font-weight: 500;">
-                { 'Validated' if st.session_state.analysis_complete else 'Ready' }
+                {'Validated' if st.session_state.analysis_complete else 'Ready'}
             </div>
         </div>
     ''', unsafe_allow_html=True)
@@ -859,27 +974,42 @@ with tab1:
     st.markdown(f'''
         <div class="g-card">
             <div class="g-card-header">
-                <div>
-                    <h3 class="g-card-title">📁 Secure Data Upload</h3>
-                    <p class="g-card-subtitle">Upload CSV or Excel files for analysis (Max: {config['MAX_FILE_SIZE_MB']}MB)</p>
+                <div style="flex: 1;">
+                    <h3 class="g-card-title" style="margin-bottom: 8px;">📁 Secure Data Upload</h3>
+                    <p class="g-card-subtitle">
+                        Upload CSV or Excel files for sentiment analysis
+                    </p>
                 </div>
-                <span class="status-indicator status-active">● Ready</span>
+                <span class="status-indicator status-active">Ready to Upload</span>
             </div>
         </div>
     ''', unsafe_allow_html=True)
     
+    # File upload section with better visibility
+    st.markdown('<div class="upload-section">', unsafe_allow_html=True)
+    
     uploaded_file = st.file_uploader(
-        "Choose a file to upload",
+        "**Drag and drop or click to browse files**",
         type=config['ALLOWED_FILE_TYPES'],
-        help=f"Supported formats: {', '.join(config['ALLOWED_FILE_TYPES']).upper()}",
+        help=f"Supported formats: {', '.join(config['ALLOWED_FILE_TYPES']).upper()}. Maximum file size: {config['MAX_FILE_SIZE_MB']}MB",
         label_visibility="collapsed"
     )
+    
+    st.markdown(f'''
+        <div class="upload-info">
+            📄 <strong>Supported formats:</strong> {', '.join(config['ALLOWED_FILE_TYPES']).upper()}<br>
+            📏 <strong>Maximum size:</strong> {config['MAX_FILE_SIZE_MB']}MB<br>
+            🔒 <strong>Security:</strong> All uploads are encrypted and logged
+        </div>
+    ''', unsafe_allow_html=True)
+    
+    st.markdown('</div>', unsafe_allow_html=True)
     
     if uploaded_file is not None:
         # Security check: File size
         file_size_mb = len(uploaded_file.getvalue()) / (1024 * 1024)
         if file_size_mb > config['MAX_FILE_SIZE_MB']:
-            st.error(f"File size ({file_size_mb:.1f}MB) exceeds maximum allowed size ({config['MAX_FILE_SIZE_MB']}MB)")
+            st.error(f"❌ File size ({file_size_mb:.1f}MB) exceeds maximum allowed size ({config['MAX_FILE_SIZE_MB']}MB)")
         else:
             try:
                 # Read file based on type
@@ -909,7 +1039,7 @@ with tab1:
                     <div class="g-card">
                         <div class="g-card-header">
                             <div>
-                                <h3 class="g-card-title">File Details</h3>
+                                <h3 class="g-card-title">✅ File Uploaded Successfully</h3>
                                 <p class="g-card-subtitle">{uploaded_file.name}</p>
                             </div>
                             <span class="security-badge">🔐 Secured</span>
@@ -965,13 +1095,27 @@ with tab1:
                 ''', unsafe_allow_html=True)
                 
                 text_column = st.selectbox(
-                    "Select text column",
+                    "**Select text column for analysis**",
                     df.columns.tolist(),
-                    help="Select the column containing text for analysis",
+                    help="Select the column containing text for sentiment analysis",
                     key="text_column_selector"
                 )
                 
                 st.session_state.text_column = text_column
+                
+                # Additional options
+                with st.expander("⚙️ Advanced Options"):
+                    sample_size = st.slider(
+                        "Sample size (for testing)",
+                        100, min(1000, len(df)), min(500, len(df)),
+                        help="Analyze a sample of the data for faster results"
+                    )
+                    
+                    include_timestamp = st.checkbox(
+                        "Include timestamp in analysis",
+                        value=True,
+                        help="Add analysis timestamp to results"
+                    )
                 
                 # Start analysis button
                 col1, col2, col3 = st.columns([1, 2, 1])
@@ -985,14 +1129,15 @@ with tab1:
                             'username': st.session_state.username,
                             'action': 'analysis_started',
                             'text_column': text_column,
-                            'rows': len(df)
+                            'rows': len(df),
+                            'sample_size': sample_size if 'sample_size' in locals() else 'full_dataset'
                         }
                         st.session_state.analysis_history.append(analysis_event)
                         
-                        safe_rerun()  # CORRECTED: Using safe_rerun() instead of st.experimental_rerun()
+                        safe_rerun()
                 
             except Exception as e:
-                st.error(f"Error loading file: {str(e)}")
+                st.error(f"❌ Error loading file: {str(e)}")
                 # Log error
                 error_event = {
                     'timestamp': datetime.now().isoformat(),
@@ -1005,9 +1150,32 @@ with tab1:
 with tab2:
     if not st.session_state.analysis_started:
         if st.session_state.data_loaded:
-            st.info(f"📁 Data loaded successfully ({len(st.session_state.df):,} rows). Click 'Start Secure Analysis' to begin processing.")
+            st.markdown(f'''
+                <div class="g-card">
+                    <div class="g-card-header">
+                        <div>
+                            <h3 class="g-card-title">📊 Ready for Analysis</h3>
+                            <p class="g-card-subtitle">
+                                Data loaded successfully ({len(st.session_state.df):,} rows).
+                                Click 'Start Secure Analysis' to begin processing.
+                            </p>
+                        </div>
+                        <span class="status-indicator status-inactive">Waiting</span>
+                    </div>
+                </div>
+            ''', unsafe_allow_html=True)
         else:
-            st.info("📁 Please upload data first using the Data Upload tab.")
+            st.markdown(f'''
+                <div class="g-card">
+                    <div class="g-card-header">
+                        <div>
+                            <h3 class="g-card-title">📁 No Data Available</h3>
+                            <p class="g-card-subtitle">Please upload data first using the Data Upload tab.</p>
+                        </div>
+                        <span class="status-indicator status-warning">No Data</span>
+                    </div>
+                </div>
+            ''', unsafe_allow_html=True)
     else:
         st.markdown(f'''
             <div class="g-card">
@@ -1061,22 +1229,44 @@ with tab2:
         st.session_state.analysis_history.append(completion_event)
         
         # Navigation to results
-        if st.button("📊 View Secure Results", type="primary", use_container_width=True):
-            st.info("Proceeding to Results tab...")
+        col1, col2, col3 = st.columns([1, 2, 1])
+        with col2:
+            if st.button("📊 View Secure Results", type="primary", use_container_width=True):
+                st.info("Proceeding to Results tab...")
 
 with tab3:
     if not st.session_state.analysis_complete:
         if st.session_state.analysis_started:
-            st.warning("⚠️ Analysis in progress... Please wait for completion.")
+            st.markdown(f'''
+                <div class="g-card">
+                    <div class="g-card-header">
+                        <div>
+                            <h3 class="g-card-title">⏳ Analysis in Progress</h3>
+                            <p class="g-card-subtitle">Please wait for the analysis to complete.</p>
+                        </div>
+                        <span class="status-indicator status-warning">Processing</span>
+                    </div>
+                </div>
+            ''', unsafe_allow_html=True)
         else:
-            st.info("🔍 Complete the analysis to view results and export options.")
+            st.markdown(f'''
+                <div class="g-card">
+                    <div class="g-card-header">
+                        <div>
+                            <h3 class="g-card-title">🔍 Complete Analysis First</h3>
+                            <p class="g-card-subtitle">Complete the analysis to view results and export options.</p>
+                        </div>
+                        <span class="status-indicator status-inactive">No Results</span>
+                    </div>
+                </div>
+            ''', unsafe_allow_html=True)
     else:
         st.markdown(f'''
             <div class="g-card">
                 <div class="g-card-header">
                     <div>
                         <h3 class="g-card-title">📈 Analysis Results</h3>
-                        <p class="g-card-subtitle">Secure sentiment analysis insights</p>
+                        <p class="g-card-subtitle">Secure sentiment analysis insights based on your data</p>
                     </div>
                     <span class="status-indicator status-active">● Complete</span>
                 </div>
@@ -1123,9 +1313,9 @@ with tab3:
         st.markdown(f'''
             <div class="g-card">
                 <div class="g-card-header">
-                    <h3 class="g-card-title">Sentiment Distribution</h3>
-                    <div style="font-size: 12px; color: {COLORS['text_light']};">
-                        Based on {len(st.session_state.df):,} analyzed records
+                    <div>
+                        <h3 class="g-card-title">Sentiment Distribution</h3>
+                        <p class="g-card-subtitle">Based on {len(st.session_state.df):,} analyzed records</p>
                     </div>
                 </div>
             </div>
@@ -1153,8 +1343,10 @@ with tab3:
         st.markdown(f'''
             <div class="g-card">
                 <div class="g-card-header">
-                    <h3 class="g-card-title">📤 Secure Export Options</h3>
-                    <p class="g-card-subtitle">Download analysis results securely</p>
+                    <div>
+                        <h3 class="g-card-title">📤 Secure Export Options</h3>
+                        <p class="g-card-subtitle">Download analysis results securely. All exports are encrypted and logged.</p>
+                    </div>
                 </div>
             </div>
         ''', unsafe_allow_html=True)
@@ -1165,15 +1357,14 @@ with tab3:
         with col1:
             st.markdown(f'''
                 <div class="export-card">
-                    <div style="font-size: 42px; margin-bottom: 16px; color: {COLORS['primary']};">📊</div>
-                    <div style="font-weight: 600; margin-bottom: 10px; font-size: 18px; color: {COLORS['text']};">
-                        Summary Report
+                    <div class="export-icon">📊</div>
+                    <div class="export-title">Summary Report</div>
+                    <div class="export-description">
+                        Comprehensive analysis summary with key metrics, insights, and recommendations.
+                        Includes sentiment distribution and performance indicators.
                     </div>
-                    <div style="font-size: 14px; color: {COLORS['text_light']}; margin-bottom: 20px; line-height: 1.5;">
-                        Comprehensive analysis summary with key metrics and insights
-                    </div>
-                    <div style="font-size: 11px; color: {COLORS['text_light']};">
-                        🔐 Encrypted CSV • Timestamped • Audit Trail
+                    <div class="export-security">
+                        🔐 Encrypted CSV • Timestamped • Audit Trail Included
                     </div>
                 </div>
             ''', unsafe_allow_html=True)
@@ -1213,7 +1404,8 @@ with tab3:
                     data=csv_data,
                     file_name=export_event['filename'],
                     mime="text/csv",
-                    key="download_summary_csv"
+                    key="download_summary_csv",
+                    use_container_width=True
                 )
                 
                 st.success(f"✅ Summary report generated! Download started.")
@@ -1221,14 +1413,13 @@ with tab3:
         with col2:
             st.markdown(f'''
                 <div class="export-card">
-                    <div style="font-size: 42px; margin-bottom: 16px; color: {COLORS['secondary']};">📈</div>
-                    <div style="font-weight: 600; margin-bottom: 10px; font-size: 18px; color: {COLORS['text']};">
-                        Detailed Analysis
+                    <div class="export-icon">📈</div>
+                    <div class="export-title">Detailed Analysis</div>
+                    <div class="export-description">
+                        Complete dataset with sentiment scores, confidence metrics, and analysis metadata.
+                        Includes all original data plus analysis results.
                     </div>
-                    <div style="font-size: 14px; color: {COLORS['text_light']}; margin-bottom: 20px; line-height: 1.5;">
-                        Complete dataset with sentiment scores and confidence metrics
-                    </div>
-                    <div style="font-size: 11px; color: {COLORS['text_light']};">
+                    <div class="export-security">
                         🔐 Full Dataset • Sentiment Scores • Confidence Levels
                     </div>
                 </div>
@@ -1270,7 +1461,8 @@ with tab3:
                         data=csv_data,
                         file_name=export_event['filename'],
                         mime="text/csv",
-                        key="download_detailed_csv"
+                        key="download_detailed_csv",
+                        use_container_width=True
                     )
                     
                     st.success(f"✅ Detailed analysis exported ({len(detailed_df):,} records)!")
@@ -1279,7 +1471,16 @@ with tab3:
         
         # Additional export options
         st.markdown("---")
-        st.markdown("### 🔧 Advanced Export Options")
+        st.markdown(f'''
+            <div class="g-card">
+                <div class="g-card-header">
+                    <div>
+                        <h3 class="g-card-title">🔧 Advanced Export Options</h3>
+                        <p class="g-card-subtitle">Additional export formats and specialized reports</p>
+                    </div>
+                </div>
+            </div>
+        ''', unsafe_allow_html=True)
         
         col1, col2 = st.columns(2)
         
@@ -1313,7 +1514,8 @@ with tab3:
                         data=csv_data,
                         file_name=export_event['filename'],
                         mime="text/csv",
-                        key="download_samples_csv"
+                        key="download_samples_csv",
+                        use_container_width=True
                     )
                     
                     st.success(f"✅ Sample data exported ({sample_size} records)!")
@@ -1345,7 +1547,8 @@ with tab3:
                     data=csv_data,
                     file_name=export_event['filename'],
                     mime="text/csv",
-                    key="download_chartdata_csv"
+                    key="download_chartdata_csv",
+                    use_container_width=True
                 )
                 
                 st.success("✅ Chart data exported successfully!")
@@ -1354,8 +1557,11 @@ with tab3:
         if st.session_state.user_role == 'admin' and st.session_state.export_history:
             st.markdown("---")
             with st.expander("📋 Export History (Admin Only)"):
-                history_df = pd.DataFrame(st.session_state.export_history)
-                st.dataframe(history_df, use_container_width=True)
+                if st.session_state.export_history:
+                    history_df = pd.DataFrame(st.session_state.export_history)
+                    st.dataframe(history_df, use_container_width=True)
+                else:
+                    st.info("No export history available.")
 
 # ==================== FOOTER ====================
 st.markdown("---")
