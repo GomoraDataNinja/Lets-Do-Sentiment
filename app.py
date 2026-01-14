@@ -147,6 +147,8 @@ st.markdown(f"""
     .stApp {{
         background-color: {COLORS['background']};
         font-family: 'Google Sans', 'Roboto', 'Segoe UI', sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
     }}
     
     /* Security indicators */
@@ -161,6 +163,7 @@ st.markdown(f"""
         background: {COLORS['success']}15;
         color: {COLORS['success']};
         border: 1px solid {COLORS['success']}30;
+        white-space: nowrap;
     }}
     
     .deployment-badge {{
@@ -219,6 +222,7 @@ st.markdown(f"""
         color: {COLORS['text']};
         text-align: center;
         margin-bottom: 0.5rem;
+        line-height: 1.2;
     }}
     
     .login-subtitle {{
@@ -234,9 +238,9 @@ st.markdown(f"""
         background: {COLORS['card']};
         border: 1px solid {COLORS['neutral']}30;
         border-radius: 10px;
-        padding: 18px;
+        padding: 20px;
         text-align: center;
-        min-height: 120px;
+        min-height: 130px;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -244,6 +248,7 @@ st.markdown(f"""
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
         word-wrap: break-word;
         overflow-wrap: break-word;
+        overflow: hidden;
     }}
     
     .metric-card:hover {{
@@ -271,6 +276,13 @@ st.markdown(f"""
         font-weight: 600;
         margin-bottom: 5px;
         line-height: 1.3;
+    }}
+    
+    .metric-status {{
+        font-size: 11px;
+        color: {COLORS['text_light']};
+        margin-top: 5px;
+        font-weight: 500;
     }}
     
     .g-card {{
@@ -302,10 +314,11 @@ st.markdown(f"""
         font-size: 20px;
         font-weight: 500;
         color: {COLORS['text']};
-        margin: 0 0 5px 0;
+        margin: 0 0 8px 0;
         display: flex;
         align-items: center;
         gap: 10px;
+        line-height: 1.3;
     }}
     
     .g-card-subtitle {{
@@ -392,6 +405,7 @@ st.markdown(f"""
         transition: all 0.3s ease;
         border: 1px solid transparent;
         margin-top: 10px;
+        line-height: 1.4;
     }}
     
     .stButton > button:hover {{
@@ -402,10 +416,10 @@ st.markdown(f"""
     /* FIXED: Export cards - Better text visibility */
     .export-card {{
         text-align: center;
-        padding: 20px;
+        padding: 24px 20px;
         border: 2px dashed {COLORS['neutral']}40;
         border-radius: 12px;
-        min-height: 220px;
+        min-height: 240px;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -413,6 +427,7 @@ st.markdown(f"""
         background: {COLORS['background']};
         word-wrap: break-word;
         overflow-wrap: break-word;
+        overflow: hidden;
     }}
     
     .export-card:hover {{
@@ -423,29 +438,32 @@ st.markdown(f"""
     }}
     
     .export-icon {{
-        font-size: 42px;
+        font-size: 40px;
         margin-bottom: 16px;
         color: {COLORS['primary']};
+        line-height: 1;
     }}
     
     .export-title {{
         font-weight: 600;
-        margin-bottom: 10px;
+        margin-bottom: 12px;
         font-size: 18px;
         color: {COLORS['text']};
+        line-height: 1.3;
     }}
     
     .export-description {{
         font-size: 13px;
         color: {COLORS['text_light']};
-        margin-bottom: 20px;
+        margin-bottom: 16px;
         line-height: 1.5;
     }}
     
     .export-security {{
         font-size: 11px;
         color: {COLORS['text_light']};
-        margin-top: 10px;
+        margin-top: 12px;
+        line-height: 1.4;
     }}
     
     /* Security warnings */
@@ -460,6 +478,7 @@ st.markdown(f"""
         display: flex;
         align-items: center;
         gap: 10px;
+        line-height: 1.5;
     }}
     
     /* Progress bars */
@@ -483,7 +502,7 @@ st.markdown(f"""
     
     /* File upload section improvements */
     .upload-section {{
-        padding: 25px;
+        padding: 30px;
         background: {COLORS['background']};
         border-radius: 10px;
         border: 2px dashed {COLORS['neutral']}40;
@@ -494,8 +513,8 @@ st.markdown(f"""
     .upload-info {{
         font-size: 14px;
         color: {COLORS['text_light']};
-        margin-top: 10px;
-        line-height: 1.5;
+        margin-top: 15px;
+        line-height: 1.6;
     }}
     
     /* Hide Streamlit branding */
@@ -521,6 +540,15 @@ st.markdown(f"""
         font-size: 13px;
     }}
     
+    .stDataFrame th {{
+        font-weight: 600;
+    }}
+    
+    .stDataFrame td {{
+        font-size: 13px;
+        padding: 8px 12px;
+    }}
+    
     /* Tab improvements */
     .stTabs [data-baseweb="tab-list"] {{
         gap: 2px;
@@ -534,7 +562,7 @@ st.markdown(f"""
     
     /* Better column spacing */
     .stColumn {{
-        padding: 5px;
+        padding: 8px;
     }}
     
     /* File uploader text visibility */
@@ -545,12 +573,39 @@ st.markdown(f"""
     [data-testid="stFileUploader"] label {{
         font-weight: 500;
         color: {COLORS['text']};
+        font-size: 15px;
     }}
     
     /* Button text visibility */
     button[kind="primary"] {{
         font-weight: 600;
         letter-spacing: 0.3px;
+    }}
+    
+    /* Form labels */
+    .stTextInput > label, .stSelectbox > label, .stSlider > label {{
+        font-weight: 500;
+        color: {COLORS['text']};
+        font-size: 14px;
+    }}
+    
+    /* Alert and info boxes */
+    .stAlert {{
+        font-size: 14px;
+        line-height: 1.5;
+    }}
+    
+    .stExpander {{
+        font-size: 14px;
+    }}
+    
+    .stExpander > summary {{
+        font-weight: 500;
+    }}
+    
+    /* Chart improvements */
+    .js-plotly-plot {{
+        font-family: 'Google Sans', 'Roboto', sans-serif;
     }}
     
     /* Responsive adjustments */
@@ -560,8 +615,8 @@ st.markdown(f"""
         }}
         
         .export-card {{
-            min-height: 200px;
-            padding: 15px;
+            min-height: 220px;
+            padding: 20px 15px;
         }}
         
         .stButton > button {{
@@ -570,8 +625,50 @@ st.markdown(f"""
         }}
         
         .g-card {{
-            padding: 18px;
+            padding: 20px 16px;
         }}
+        
+        .g-card-title {{
+            font-size: 18px;
+        }}
+        
+        .export-title {{
+            font-size: 16px;
+        }}
+        
+        .export-description {{
+            font-size: 12px;
+        }}
+    }}
+    
+    /* Text selection */
+    * {{
+        -webkit-tap-highlight-color: transparent;
+    }}
+    
+    /* Focus states */
+    :focus {{
+        outline: 2px solid {COLORS['primary']}50;
+        outline-offset: 2px;
+    }}
+    
+    /* Scrollbar styling */
+    ::-webkit-scrollbar {{
+        width: 8px;
+        height: 8px;
+    }}
+    
+    ::-webkit-scrollbar-track {{
+        background: {COLORS['background']};
+    }}
+    
+    ::-webkit-scrollbar-thumb {{
+        background: {COLORS['neutral']}40;
+        border-radius: 4px;
+    }}
+    
+    ::-webkit-scrollbar-thumb:hover {{
+        background: {COLORS['neutral']}60;
     }}
 </style>
 """, unsafe_allow_html=True)
@@ -683,14 +780,13 @@ def show_login_page():
     
     # Deployment info footer
     st.markdown(f"""
-        <div class="login-footer">
-            <p style="margin-bottom: 8px;">© 2024 {APP_NAME}</p>
-            <div style="font-size: 11px; color: {COLORS['text_light']};">
-                <div style="display: flex; justify-content: center; gap: 20px; margin-bottom: 4px;">
-                    <span>Version: {APP_VERSION}</span>
-                    <span>Mode: {DEPLOYMENT_MODE}</span>
+        <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid {COLORS['neutral']}20;">
+            <div style="text-align: center; color: {COLORS['text_light']}; font-size: 12px;">
+                <div style="margin-bottom: 8px;">
+                    <strong>{APP_NAME} v{APP_VERSION}</strong>
                 </div>
-                <div style="font-size: 10px; opacity: 0.8;">
+                <div style="font-size: 11px; opacity: 0.8;">
+                    © 2024 Secure Sentiment Analysis Dashboard<br>
                     Unauthorized access is prohibited
                 </div>
             </div>
@@ -820,7 +916,7 @@ with st.sidebar:
                     {datetime.now().strftime('%Y-%m-%d %H:%M')}
                 </div>
             </div>
-            <div style="font-size: 13px; color: {COLORS['text_light']};">
+            <div style="font-size: 13px; color: {COLORS['text_light']}; line-height: 1.5;">
                 User: <strong>{st.session_state.username}</strong><br>
                 Role: <strong>{st.session_state.user_role}</strong>
             </div>
@@ -920,7 +1016,7 @@ with col1:
         <div class="metric-card">
             <div class="metric-label">Total Reviews</div>
             <div class="metric-value">{total_reviews if total_reviews > 0 else '--'}</div>
-            <div style="font-size: 12px; color: {status_color}; font-weight: 500;">
+            <div class="metric-status" style="color: {status_color};">
                 {status_text}
             </div>
         </div>
@@ -935,7 +1031,7 @@ with col2:
         <div class="metric-card">
             <div class="metric-label">Avg Sentiment</div>
             <div class="metric-value">{avg_sentiment}</div>
-            <div style="font-size: 12px; color: {status_color}; font-weight: 500;">
+            <div class="metric-status" style="color: {status_color};">
                 {status_text}
             </div>
         </div>
@@ -948,7 +1044,7 @@ with col3:
         <div class="metric-card">
             <div class="metric-label">Processing Speed</div>
             <div class="metric-value">{processing_speed}</div>
-            <div style="font-size: 12px; color: {COLORS['success']}; font-weight: 500;">
+            <div class="metric-status" style="color: {COLORS['success']};">
                 Optimized
             </div>
         </div>
@@ -961,7 +1057,7 @@ with col4:
         <div class="metric-card">
             <div class="metric-label">Accuracy</div>
             <div class="metric-value">{accuracy}</div>
-            <div style="font-size: 12px; color: {COLORS['success']}; font-weight: 500;">
+            <div class="metric-status" style="color: {COLORS['success']};">
                 {'Validated' if st.session_state.analysis_complete else 'Ready'}
             </div>
         </div>
@@ -977,7 +1073,7 @@ with tab1:
                 <div style="flex: 1;">
                     <h3 class="g-card-title" style="margin-bottom: 8px;">📁 Secure Data Upload</h3>
                     <p class="g-card-subtitle">
-                        Upload CSV or Excel files for sentiment analysis
+                        Upload CSV or Excel files for sentiment analysis. All uploads are encrypted and logged.
                     </p>
                 </div>
                 <span class="status-indicator status-active">Ready to Upload</span>
@@ -1281,7 +1377,7 @@ with tab3:
                 <div class="metric-card">
                     <div class="metric-label">Positive Sentiment</div>
                     <div class="metric-value" style="color: {COLORS['success']};">65%</div>
-                    <div style="font-size: 12px; color: {COLORS['success']}; font-weight: 500;">
+                    <div class="metric-status" style="color: {COLORS['success']};">
                         ↑ 12% from baseline
                     </div>
                 </div>
@@ -1292,7 +1388,7 @@ with tab3:
                 <div class="metric-card">
                     <div class="metric-label">Negative Sentiment</div>
                     <div class="metric-value" style="color: {COLORS['danger']};">15%</div>
-                    <div style="font-size: 12px; color: {COLORS['danger']}; font-weight: 500;">
+                    <div class="metric-status" style="color: {COLORS['danger']};">
                         ↓ 5% from baseline
                     </div>
                 </div>
@@ -1303,7 +1399,7 @@ with tab3:
                 <div class="metric-card">
                     <div class="metric-label">Neutral Sentiment</div>
                     <div class="metric-value" style="color: {COLORS['neutral']};">20%</div>
-                    <div style="font-size: 12px; color: {COLORS['neutral']}; font-weight: 500;">
+                    <div class="metric-status" style="color: {COLORS['neutral']};">
                         → Stable trend
                     </div>
                 </div>
@@ -1335,7 +1431,15 @@ with tab3:
             showlegend=True,
             paper_bgcolor='rgba(0,0,0,0)',
             plot_bgcolor='rgba(0,0,0,0)',
-            font=dict(family="Google Sans, Roboto, sans-serif")
+            font=dict(family="Google Sans, Roboto, sans-serif", size=14),
+            legend=dict(
+                font=dict(size=13),
+                orientation="h",
+                yanchor="bottom",
+                y=-0.2,
+                xanchor="center",
+                x=0.5
+            )
         )
         st.plotly_chart(fig, use_container_width=True)
         
@@ -1570,7 +1674,7 @@ st.markdown(f'''
         <div style="margin-bottom: 8px;">
             <strong>{APP_NAME} v{APP_VERSION}</strong> • {DEPLOYMENT_MODE.upper()} MODE • SECURE SESSION
         </div>
-        <div style="display: flex; justify-content: center; gap: 30px; margin-bottom: 8px;">
+        <div style="display: flex; justify-content: center; gap: 30px; margin-bottom: 8px; font-size: 11px;">
             <span>User: {st.session_state.username}</span>
             <span>Role: {st.session_state.user_role.upper()}</span>
             <span>Session: {st.session_state.session_id}</span>
