@@ -130,7 +130,7 @@ def update_activity():
 # ==================== PAGE CONFIGURATION ====================
 st.set_page_config(
     page_title=f"{APP_NAME} v{APP_VERSION}",
-    page_icon="📊",
+    page_icon="icon.png",
     layout="wide",
     initial_sidebar_state="collapsed",
     menu_items={
@@ -138,17 +138,18 @@ st.set_page_config(
         'Report a bug': None,
         'About': f'''
         ### {APP_NAME} v{APP_VERSION}
-        
+
         Secure Sentiment Analysis Dashboard
-        
-        **Deployment Mode:** {DEPLOYMENT_MODE}
-        **Security:** Password protected
-        **Features:** File upload, sentiment analysis, export
-        
+
+        Deployment Mode: {DEPLOYMENT_MODE}
+        Security: Password protected
+        Features: File upload, sentiment analysis, export
+
         © 2026 All rights reserved.
         '''
     }
 )
+
 
 # ==================== SESSION STATE INITIALIZATION ====================
 # Security-related session state
@@ -1986,6 +1987,7 @@ with st.sidebar:
             st.session_state.current_theme = new_theme
             COLORS = get_theme_colors(new_theme)
             safe_rerun()
+
 
 
 
