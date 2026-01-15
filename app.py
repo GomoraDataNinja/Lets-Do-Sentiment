@@ -985,7 +985,7 @@ def show_login_page():
                     <strong>{APP_NAME} v{APP_VERSION}</strong>
                 </div>
                 <div style="font-size: 11px; opacity: 0.8;">
-                    © 2025 Secure Sentiment Analysis Dashboard<br>
+                    © 2026 Secure Sentiment Analysis Dashboard<br>
                     Unauthorized access is prohibited
                 </div>
             </div>
@@ -1986,5 +1986,6 @@ with st.sidebar:
             st.session_state.current_theme = new_theme
             COLORS = get_theme_colors(new_theme)
             safe_rerun()
+
 
 
