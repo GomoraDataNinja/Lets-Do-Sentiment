@@ -143,12 +143,18 @@ SENTIMENT_COLORS = {
 # Enhanced CSS for deployment with FIXED text visibility
 st.markdown(f"""
 <style>
-    /* Base styles */
+    /* Base styles - ENHANCED FOR VISIBILITY */
     .stApp {{
         background-color: {COLORS['background']};
         font-family: 'Google Sans', 'Roboto', 'Segoe UI', sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
+    }}
+    
+    /* FORCE ALL TEXT TO BE VISIBLE */
+    * {{
+        visibility: visible !important;
+        opacity: 1 !important;
     }}
     
     /* Security indicators */
@@ -161,9 +167,11 @@ st.markdown(f"""
         font-size: 11px;
         font-weight: 600;
         background: {COLORS['success']}15;
-        color: {COLORS['success']};
+        color: {COLORS['success']} !important;
         border: 1px solid {COLORS['success']}30;
         white-space: nowrap;
+        visibility: visible !important;
+        opacity: 1 !important;
     }}
     
     .deployment-badge {{
@@ -171,16 +179,17 @@ st.markdown(f"""
         bottom: 10px;
         right: 10px;
         background: {COLORS['primary']};
-        color: white;
+        color: white !important;
         padding: 4px 10px;
         border-radius: 12px;
         font-size: 10px;
         font-weight: 600;
         z-index: 9999;
         opacity: 0.9;
+        visibility: visible !important;
     }}
     
-    /* Login page */
+    /* Login page - ENHANCED VISIBILITY */
     .login-container {{
         display: flex;
         justify-content: center;
@@ -211,29 +220,35 @@ st.markdown(f"""
         align-items: center;
         justify-content: center;
         font-size: 2.2rem;
-        color: white;
+        color: white !important;
         font-weight: bold;
         box-shadow: 0 4px 12px rgba(66, 133, 244, 0.3);
+        visibility: visible !important;
+        opacity: 1 !important;
     }}
     
     .login-title {{
         font-size: 28px;
         font-weight: 400;
-        color: {COLORS['text']};
+        color: {COLORS['text']} !important;
         text-align: center;
         margin-bottom: 0.5rem;
         line-height: 1.2;
+        visibility: visible !important;
+        opacity: 1 !important;
     }}
     
     .login-subtitle {{
-        color: {COLORS['text_light']};
+        color: {COLORS['text_light']} !important;
         text-align: center;
         margin-bottom: 2.5rem;
         font-size: 15px;
         line-height: 1.5;
+        visibility: visible !important;
+        opacity: 1 !important;
     }}
     
-    /* FIXED: Dashboard components - Text visibility improvements */
+    /* Dashboard components - ENHANCED VISIBILITY */
     .metric-card {{
         background: {COLORS['card']};
         border: 1px solid {COLORS['neutral']}30;
@@ -248,7 +263,9 @@ st.markdown(f"""
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
         word-wrap: break-word;
         overflow-wrap: break-word;
-        overflow: hidden;
+        overflow: visible;
+        visibility: visible !important;
+        opacity: 1 !important;
     }}
     
     .metric-card:hover {{
@@ -260,29 +277,35 @@ st.markdown(f"""
     .metric-value {{
         font-size: 32px;
         font-weight: 400;
-        color: {COLORS['text']};
+        color: {COLORS['text']} !important;
         margin: 8px 0;
         font-family: 'Google Sans Display', sans-serif;
         line-height: 1.2;
-        overflow: hidden;
-        text-overflow: ellipsis;
+        overflow: visible;
+        text-overflow: clip;
+        visibility: visible !important;
+        opacity: 1 !important;
     }}
     
     .metric-label {{
         font-size: 12px;
-        color: {COLORS['text_light']};
+        color: {COLORS['text_light']} !important;
         text-transform: uppercase;
         letter-spacing: 0.8px;
         font-weight: 600;
         margin-bottom: 5px;
         line-height: 1.3;
+        visibility: visible !important;
+        opacity: 1 !important;
     }}
     
     .metric-status {{
         font-size: 11px;
-        color: {COLORS['text_light']};
+        color: {COLORS['text_light']} !important;
         margin-top: 5px;
         font-weight: 500;
+        visibility: visible !important;
+        opacity: 1 !important;
     }}
     
     .g-card {{
@@ -293,6 +316,8 @@ st.markdown(f"""
         margin-bottom: 20px;
         box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
         transition: all 0.3s ease;
+        visibility: visible !important;
+        opacity: 1 !important;
     }}
     
     .g-card:hover {{
@@ -308,25 +333,31 @@ st.markdown(f"""
         border-bottom: 1px solid {COLORS['neutral']}20;
         flex-wrap: wrap;
         gap: 15px;
+        visibility: visible !important;
+        opacity: 1 !important;
     }}
     
     .g-card-title {{
         font-size: 20px;
         font-weight: 500;
-        color: {COLORS['text']};
+        color: {COLORS['text']} !important;
         margin: 0 0 8px 0;
         display: flex;
         align-items: center;
         gap: 10px;
         line-height: 1.3;
+        visibility: visible !important;
+        opacity: 1 !important;
     }}
     
     .g-card-subtitle {{
         font-size: 14px;
-        color: {COLORS['text_light']};
+        color: {COLORS['text_light']} !important;
         margin: 0;
         line-height: 1.5;
         opacity: 0.9;
+        visibility: visible !important;
+        opacity: 1 !important;
     }}
     
     /* Status indicators */
@@ -340,23 +371,25 @@ st.markdown(f"""
         font-weight: 600;
         letter-spacing: 0.3px;
         white-space: nowrap;
+        visibility: visible !important;
+        opacity: 1 !important;
     }}
     
     .status-active {{
         background: {COLORS['success']}15;
-        color: {COLORS['success']};
+        color: {COLORS['success']} !important;
         border: 1px solid {COLORS['success']}30;
     }}
     
     .status-warning {{
         background: {COLORS['warning']}15;
-        color: {COLORS['warning']};
+        color: {COLORS['warning']} !important;
         border: 1px solid {COLORS['warning']}30;
     }}
     
     .status-inactive {{
         background: {COLORS['neutral']}15;
-        color: {COLORS['neutral']};
+        color: {COLORS['neutral']} !important;
         border: 1px solid {COLORS['neutral']}30;
     }}
     
@@ -370,8 +403,10 @@ st.markdown(f"""
         border-radius: 24px;
         border: 1px solid {COLORS['neutral']}30;
         font-size: 14px;
-        color: {COLORS['text']};
+        color: {COLORS['text']} !important;
         font-weight: 500;
+        visibility: visible !important;
+        opacity: 1 !important;
     }}
     
     .user-avatar {{
@@ -379,13 +414,15 @@ st.markdown(f"""
         height: 36px;
         border-radius: 50%;
         background: linear-gradient(135deg, {COLORS['primary']}, {COLORS['secondary']});
-        color: white;
+        color: white !important;
         display: flex;
         align-items: center;
         justify-content: center;
         font-size: 15px;
         font-weight: 600;
         box-shadow: 0 2px 6px rgba(66, 133, 244, 0.3);
+        visibility: visible !important;
+        opacity: 1 !important;
     }}
     
     .header-container {{
@@ -394,9 +431,11 @@ st.markdown(f"""
         padding: 1.2rem 2.5rem;
         margin: -2rem -1rem 2rem -1rem;
         box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+        visibility: visible !important;
+        opacity: 1 !important;
     }}
     
-    /* Buttons */
+    /* Buttons - ENHANCED VISIBILITY */
     .stButton > button {{
         border-radius: 8px;
         padding: 10px 22px;
@@ -406,6 +445,9 @@ st.markdown(f"""
         border: 1px solid transparent;
         margin-top: 10px;
         line-height: 1.4;
+        visibility: visible !important;
+        opacity: 1 !important;
+        color: white !important;
     }}
     
     .stButton > button:hover {{
@@ -413,7 +455,7 @@ st.markdown(f"""
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     }}
     
-    /* FIXED: Export cards - Better text visibility */
+    /* Export cards - ENHANCED VISIBILITY */
     .export-card {{
         text-align: center;
         padding: 24px 20px;
@@ -427,7 +469,9 @@ st.markdown(f"""
         background: {COLORS['background']};
         word-wrap: break-word;
         overflow-wrap: break-word;
-        overflow: hidden;
+        overflow: visible;
+        visibility: visible !important;
+        opacity: 1 !important;
     }}
     
     .export-card:hover {{
@@ -440,30 +484,38 @@ st.markdown(f"""
     .export-icon {{
         font-size: 40px;
         margin-bottom: 16px;
-        color: {COLORS['primary']};
+        color: {COLORS['primary']} !important;
         line-height: 1;
+        visibility: visible !important;
+        opacity: 1 !important;
     }}
     
     .export-title {{
         font-weight: 600;
         margin-bottom: 12px;
         font-size: 18px;
-        color: {COLORS['text']};
+        color: {COLORS['text']} !important;
         line-height: 1.3;
+        visibility: visible !important;
+        opacity: 1 !important;
     }}
     
     .export-description {{
         font-size: 13px;
-        color: {COLORS['text_light']};
+        color: {COLORS['text_light']} !important;
         margin-bottom: 16px;
         line-height: 1.5;
+        visibility: visible !important;
+        opacity: 1 !important;
     }}
     
     .export-security {{
         font-size: 11px;
-        color: {COLORS['text_light']};
+        color: {COLORS['text_light']} !important;
         margin-top: 12px;
         line-height: 1.4;
+        visibility: visible !important;
+        opacity: 1 !important;
     }}
     
     /* Security warnings */
@@ -473,26 +525,34 @@ st.markdown(f"""
         border-radius: 8px;
         padding: 16px;
         margin: 16px 0;
-        color: {COLORS['warning']};
+        color: {COLORS['warning']} !important;
         font-size: 13px;
         display: flex;
         align-items: center;
         gap: 10px;
         line-height: 1.5;
+        visibility: visible !important;
+        opacity: 1 !important;
     }}
     
     /* Progress bars */
     .stProgress > div > div > div > div {{
         background: linear-gradient(90deg, {COLORS['primary']}, {COLORS['secondary']});
         border-radius: 4px;
+        visibility: visible !important;
+        opacity: 1 !important;
     }}
     
-    /* Input fields */
+    /* Input fields - ENHANCED VISIBILITY */
     .stTextInput > div > div > input {{
         border-radius: 8px;
         border: 1px solid {COLORS['neutral']}50;
         padding: 12px 16px;
         font-size: 15px;
+        color: {COLORS['text']} !important;
+        background: white !important;
+        visibility: visible !important;
+        opacity: 1 !important;
     }}
     
     .stTextInput > div > div > input:focus {{
@@ -500,7 +560,14 @@ st.markdown(f"""
         box-shadow: 0 0 0 2px {COLORS['primary']}20;
     }}
     
-    /* File upload section improvements */
+    .stTextInput > label {{
+        color: {COLORS['text']} !important;
+        font-weight: 500;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }}
+    
+    /* File upload section - ENHANCED VISIBILITY */
     .upload-section {{
         padding: 30px;
         background: {COLORS['background']};
@@ -508,13 +575,17 @@ st.markdown(f"""
         border: 2px dashed {COLORS['neutral']}40;
         text-align: center;
         margin: 20px 0;
+        visibility: visible !important;
+        opacity: 1 !important;
     }}
     
     .upload-info {{
         font-size: 14px;
-        color: {COLORS['text_light']};
+        color: {COLORS['text_light']} !important;
         margin-top: 15px;
         line-height: 1.6;
+        visibility: visible !important;
+        opacity: 1 !important;
     }}
     
     /* Hide Streamlit branding */
@@ -532,80 +603,137 @@ st.markdown(f"""
         font-size: 11px;
         font-weight: 600;
         background: {'#34A853' if DEPLOYMENT_MODE == 'production' else '#FBBC05'};
-        color: white;
+        color: white !important;
+        visibility: visible !important;
+        opacity: 1 !important;
     }}
     
     /* Better text visibility for data frames */
     .stDataFrame {{
         font-size: 13px;
+        visibility: visible !important;
+        opacity: 1 !important;
     }}
     
     .stDataFrame th {{
         font-weight: 600;
+        color: {COLORS['text']} !important;
+        background: {COLORS['background']} !important;
+        visibility: visible !important;
+        opacity: 1 !important;
     }}
     
     .stDataFrame td {{
         font-size: 13px;
         padding: 8px 12px;
+        color: {COLORS['text']} !important;
+        visibility: visible !important;
+        opacity: 1 !important;
     }}
     
-    /* Tab improvements */
+    /* Tab improvements - ENHANCED VISIBILITY */
     .stTabs [data-baseweb="tab-list"] {{
         gap: 2px;
+        visibility: visible !important;
+        opacity: 1 !important;
     }}
     
     .stTabs [data-baseweb="tab"] {{
         font-size: 14px;
         font-weight: 500;
         padding: 12px 20px;
+        color: {COLORS['text']} !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }}
+    
+    .stTabs [data-baseweb="tab"][aria-selected="true"] {{
+        background: {COLORS['primary']} !important;
+        color: white !important;
     }}
     
     /* Better column spacing */
     .stColumn {{
         padding: 8px;
+        visibility: visible !important;
+        opacity: 1 !important;
     }}
     
-    /* File uploader text visibility */
+    /* File uploader text visibility - CRITICAL FIX */
     [data-testid="stFileUploader"] {{
-        font-size: 14px;
+        font-size: 14px !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        color: {COLORS['text']} !important;
     }}
     
     [data-testid="stFileUploader"] label {{
-        font-weight: 500;
-        color: {COLORS['text']};
-        font-size: 15px;
+        font-weight: 500 !important;
+        color: {COLORS['text']} !important;
+        font-size: 15px !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }}
+    
+    [data-testid="stFileUploader"] section {{
+        border: 2px dashed {COLORS['neutral']}40 !important;
+        background: {COLORS['background']} !important;
+        border-radius: 10px !important;
+        padding: 30px !important;
+        visibility: visible !important;
+        opacity: 1 !important;
     }}
     
     /* Button text visibility */
     button[kind="primary"] {{
         font-weight: 600;
         letter-spacing: 0.3px;
+        color: white !important;
+        visibility: visible !important;
+        opacity: 1 !important;
     }}
     
-    /* Form labels */
-    .stTextInput > label, .stSelectbox > label, .stSlider > label {{
+    /* Form labels - ENHANCED VISIBILITY */
+    .stTextInput > label, .stSelectbox > label, .stSlider > label, .stRadio > label {{
         font-weight: 500;
-        color: {COLORS['text']};
+        color: {COLORS['text']} !important;
         font-size: 14px;
+        visibility: visible !important;
+        opacity: 1 !important;
     }}
     
-    /* Alert and info boxes */
+    /* Alert and info boxes - ENHANCED VISIBILITY */
     .stAlert {{
         font-size: 14px;
         line-height: 1.5;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }}
+    
+    .stAlert [data-testid="stMarkdownContainer"] {{
+        color: inherit !important;
+        visibility: visible !important;
+        opacity: 1 !important;
     }}
     
     .stExpander {{
         font-size: 14px;
+        visibility: visible !important;
+        opacity: 1 !important;
     }}
     
     .stExpander > summary {{
         font-weight: 500;
+        color: {COLORS['text']} !important;
+        visibility: visible !important;
+        opacity: 1 !important;
     }}
     
     /* Chart improvements */
     .js-plotly-plot {{
         font-family: 'Google Sans', 'Roboto', sans-serif;
+        visibility: visible !important;
+        opacity: 1 !important;
     }}
     
     /* Responsive adjustments */
@@ -670,6 +798,64 @@ st.markdown(f"""
     ::-webkit-scrollbar-thumb:hover {{
         background: {COLORS['neutral']}60;
     }}
+    
+    /* MARKDOWN TEXT FIX - CRITICAL */
+    .stMarkdown {{
+        visibility: visible !important;
+        opacity: 1 !important;
+    }}
+    
+    .stMarkdown p, .stMarkdown h1, .stMarkdown h2, .stMarkdown h3, .stMarkdown h4, .stMarkdown h5, .stMarkdown h6 {{
+        color: {COLORS['text']} !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }}
+    
+    .stMarkdown strong, .stMarkdown b {{
+        color: {COLORS['text']} !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }}
+    
+    /* SELECTBOX FIX */
+    .stSelectbox > div > div {{
+        color: {COLORS['text']} !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }}
+    
+    /* SLIDER FIX */
+    .stSlider > div > div {{
+        color: {COLORS['text']} !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }}
+    
+    /* CHECKBOX FIX */
+    .stCheckbox > label {{
+        color: {COLORS['text']} !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }}
+    
+    /* EXPANDER FIX */
+    .streamlit-expanderHeader {{
+        color: {COLORS['text']} !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }}
+    
+    /* FORCE ALL TEXT CONTENT VISIBLE */
+    div, span, p, h1, h2, h3, h4, h5, h6, a, button, label, input, select, textarea {{
+        color: {COLORS['text']} !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }}
+    
+    /* SPECIFIC OVERRIDE FOR LIGHT TEXT */
+    .text-light, .g-card-subtitle, .metric-status, .upload-info {{
+        color: {COLORS['text_light']} !important;
+    }}
 </style>
 """, unsafe_allow_html=True)
 
@@ -729,7 +915,7 @@ def show_login_page():
     login_subtitle = f'''
         <p class="login-subtitle">
             Enter your credentials to access the sentiment analysis dashboard.<br>
-            <span style="font-size: 12px; color: {COLORS['text_light']};">
+            <span style="font-size: 12px; color: {COLORS['text_light']} !important;">
                 Deployment: <strong>{DEPLOYMENT_MODE.upper()}</strong> | Version: {APP_VERSION}
             </span>
         </p>
@@ -781,7 +967,7 @@ def show_login_page():
     # Deployment info footer
     st.markdown(f"""
         <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid {COLORS['neutral']}20;">
-            <div style="text-align: center; color: {COLORS['text_light']}; font-size: 12px;">
+            <div style="text-align: center; color: {COLORS['text_light']} !important; font-size: 12px;">
                 <div style="margin-bottom: 8px;">
                     <strong>{APP_NAME} v{APP_VERSION}</strong>
                 </div>
@@ -870,7 +1056,7 @@ st.markdown(f'''
     <div class="header-container">
         <div style="display: flex; justify-content: space-between; align-items: center;">
             <div style="display: flex; align-items: center; gap: 20px;">
-                <div style="display: flex; align-items: center; gap: 12px; color: {COLORS['primary']}; font-weight: 600; font-size: 22px;">
+                <div style="display: flex; align-items: center; gap: 12px; color: {COLORS['primary']} !important; font-weight: 600; font-size: 22px;">
                     <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
                         <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20Z" fill="#4285F4"/>
                         <path d="M12 6C8.69 6 6 8.69 6 12C6 15.31 8.69 18 12 18C15.31 18 18 15.31 18 12C18 8.69 15.31 6 12 6ZM12 16C9.79 16 8 14.21 8 12C8 9.79 9.79 8 12 8C14.21 8 16 9.79 16 12C16 14.21 14.21 16 12 16Z" fill="#4285F4"/>
@@ -878,7 +1064,7 @@ st.markdown(f'''
                     </svg>
                     <span>{APP_NAME}</span>
                 </div>
-                <div style="font-size: 14px; color: {COLORS['text_light']};">
+                <div style="font-size: 14px; color: {COLORS['text_light']} !important;">
                     v{APP_VERSION} • {DEPLOYMENT_MODE.title()} Mode
                 </div>
             </div>
@@ -887,7 +1073,7 @@ st.markdown(f'''
                     <div class="user-avatar">{st.session_state.username[0].upper()}</div>
                     <div>
                         <div style="font-weight: 600;">{st.session_state.username}</div>
-                        <div style="font-size: 11px; color: {COLORS['text_light']};">
+                        <div style="font-size: 11px; color: {COLORS['text_light']} !important;">
                             {st.session_state.user_role.upper()} • Session: {st.session_state.session_id}
                         </div>
                     </div>
@@ -907,23 +1093,23 @@ st.markdown("---")
 
 # ==================== SIDEBAR CONFIGURATION ====================
 with st.sidebar:
-    # Security info
+    # Security info with ENHANCED VISIBILITY
     st.markdown(f'''
-        <div style="padding: 20px; border-bottom: 1px solid {COLORS['neutral']}20;">
-            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+        <div style="padding: 20px; border-bottom: 1px solid {COLORS['neutral']}20; background: {COLORS['card']}; border-radius: 8px; margin-bottom: 20px;">
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
                 <div class="status-indicator status-active">🔐 Secured</div>
-                <div style="font-size: 11px; color: {COLORS['text_light']};">
+                <div style="font-size: 11px; color: {COLORS['text_light']} !important;">
                     {datetime.now().strftime('%Y-%m-%d %H:%M')}
                 </div>
             </div>
-            <div style="font-size: 13px; color: {COLORS['text_light']}; line-height: 1.5;">
-                User: <strong>{st.session_state.username}</strong><br>
-                Role: <strong>{st.session_state.user_role}</strong>
+            <div style="font-size: 13px; color: {COLORS['text']} !important; line-height: 1.5;">
+                <div style="margin-bottom: 5px;"><strong>User:</strong> {st.session_state.username}</div>
+                <div><strong>Role:</strong> {st.session_state.user_role}</div>
             </div>
         </div>
     ''', unsafe_allow_html=True)
     
-    st.markdown(f"<h3 style='color: {COLORS['text']}; margin: 25px 0 15px 0;'>⚙️ Analysis Settings</h3>", unsafe_allow_html=True)
+    st.markdown(f"<h3 style='color: {COLORS['text']} !important; margin: 25px 0 15px 0;'>⚙️ Analysis Settings</h3>", unsafe_allow_html=True)
     
     analysis_mode = st.selectbox(
         "Analysis Engine",
@@ -948,7 +1134,7 @@ with st.sidebar:
     # Security settings for admins
     if st.session_state.user_role == 'admin':
         st.markdown("---")
-        st.markdown("### 🔒 Security Settings")
+        st.markdown(f"### <span style='color: {COLORS['text']} !important;'>🔒 Security Settings</span>", unsafe_allow_html=True)
         
         auto_logout = st.checkbox("Enable Auto-logout", value=True)
         data_retention = st.slider("Data Retention (days)", 1, 90, 30)
@@ -965,7 +1151,7 @@ with st.sidebar:
             st.info(f"Security audit completed: {audit_results}")
     
     st.markdown("---")
-    st.markdown("### ⚡ Quick Actions")
+    st.markdown(f"### <span style='color: {COLORS['text']} !important;'>⚡ Quick Actions</span>", unsafe_allow_html=True)
     
     if st.button("🔄 Clear Session Data", use_container_width=True):
         st.session_state.analysis_started = False
@@ -978,28 +1164,28 @@ with st.sidebar:
     
     st.markdown("---")
     
-    # Session info
+    # Session info with ENHANCED VISIBILITY
     session_duration = (datetime.now() - st.session_state.last_activity).seconds // 60
     st.markdown(f'''
-        <div style="color: {COLORS['text_light']}; font-size: 12px; padding: 12px;">
+        <div style="color: {COLORS['text']} !important; font-size: 12px; padding: 12px; background: {COLORS['card']}; border-radius: 8px; border: 1px solid {COLORS['neutral']}20;">
             <div style="margin-bottom: 8px;">
                 <div style="display: flex; justify-content: space-between;">
                     <span>Session:</span>
-                    <span>{session_duration}m active</span>
+                    <span style="color: {COLORS['text_light']} !important;">{session_duration}m active</span>
                 </div>
                 <div style="display: flex; justify-content: space-between;">
                     <span>Version:</span>
-                    <span>{APP_VERSION}</span>
+                    <span style="color: {COLORS['text_light']} !important;">{APP_VERSION}</span>
                 </div>
                 <div style="display: flex; justify-content: space-between;">
                     <span>Mode:</span>
-                    <span>{DEPLOYMENT_MODE}</span>
+                    <span style="color: {COLORS['text_light']} !important;">{DEPLOYMENT_MODE}</span>
                 </div>
             </div>
             <div style="border-top: 1px solid {COLORS['neutral']}20; padding-top: 8px; font-size: 11px;">
-                <div style="color: {COLORS['success']};">● Session Secured</div>
-                <div style="color: {COLORS['primary']};">● Data Encrypted</div>
-                <div style="color: {COLORS['warning']};">● Activity Logged</div>
+                <div style="color: {COLORS['success']} !important;">● Session Secured</div>
+                <div style="color: {COLORS['primary']} !important;">● Data Encrypted</div>
+                <div style="color: {COLORS['warning']} !important;">● Activity Logged</div>
             </div>
         </div>
     ''', unsafe_allow_html=True)
@@ -1016,7 +1202,7 @@ with col1:
         <div class="metric-card">
             <div class="metric-label">Total Reviews</div>
             <div class="metric-value">{total_reviews if total_reviews > 0 else '--'}</div>
-            <div class="metric-status" style="color: {status_color};">
+            <div class="metric-status" style="color: {status_color} !important;">
                 {status_text}
             </div>
         </div>
@@ -1031,7 +1217,7 @@ with col2:
         <div class="metric-card">
             <div class="metric-label">Avg Sentiment</div>
             <div class="metric-value">{avg_sentiment}</div>
-            <div class="metric-status" style="color: {status_color};">
+            <div class="metric-status" style="color: {status_color} !important;">
                 {status_text}
             </div>
         </div>
@@ -1044,7 +1230,7 @@ with col3:
         <div class="metric-card">
             <div class="metric-label">Processing Speed</div>
             <div class="metric-value">{processing_speed}</div>
-            <div class="metric-status" style="color: {COLORS['success']};">
+            <div class="metric-status" style="color: {COLORS['success']} !important;">
                 Optimized
             </div>
         </div>
@@ -1057,7 +1243,7 @@ with col4:
         <div class="metric-card">
             <div class="metric-label">Accuracy</div>
             <div class="metric-value">{accuracy}</div>
-            <div class="metric-status" style="color: {COLORS['success']};">
+            <div class="metric-status" style="color: {COLORS['success']} !important;">
                 {'Validated' if st.session_state.analysis_complete else 'Ready'}
             </div>
         </div>
@@ -1067,39 +1253,58 @@ with col4:
 tab1, tab2, tab3 = st.tabs(["📁 Data Upload", "📊 Analysis", "📈 Results & Export"])
 
 with tab1:
+    # ENHANCED VISIBILITY UPLOAD SECTION
     st.markdown(f'''
         <div class="g-card">
             <div class="g-card-header">
                 <div style="flex: 1;">
-                    <h3 class="g-card-title" style="margin-bottom: 8px;">📁 Secure Data Upload</h3>
-                    <p class="g-card-subtitle">
+                    <h3 class="g-card-title" style="margin-bottom: 8px; color: {COLORS['text']} !important;">📁 Secure Data Upload</h3>
+                    <p class="g-card-subtitle" style="color: {COLORS['text_light']} !important;">
                         Upload CSV or Excel files for sentiment analysis. All uploads are encrypted and logged.
                     </p>
                 </div>
-                <span class="status-indicator status-active">Ready to Upload</span>
+                <span class="status-indicator status-active" style="color: {COLORS['success']} !important;">Ready to Upload</span>
             </div>
         </div>
     ''', unsafe_allow_html=True)
     
-    # File upload section with better visibility
-    st.markdown('<div class="upload-section">', unsafe_allow_html=True)
+    # Enhanced file upload section with better visibility
+    st.markdown(f'''
+        <div style="border: 2px dashed {COLORS['neutral']}40; border-radius: 12px; padding: 40px 20px; 
+                 background: {COLORS['background']}; text-align: center; margin: 20px 0;">
+            <div style="font-size: 18px; font-weight: 600; color: {COLORS['text']} !important; margin-bottom: 10px;">
+                📤 Drag and drop or click to browse files
+            </div>
+            <div style="font-size: 14px; color: {COLORS['text_light']} !important; line-height: 1.6;">
+                <strong>Supported formats:</strong> CSV, XLSX, XLS<br>
+                <strong>Maximum size:</strong> {config['MAX_FILE_SIZE_MB']}MB<br>
+                <strong>Security:</strong> All uploads are encrypted and logged
+            </div>
+        </div>
+    ''', unsafe_allow_html=True)
     
     uploaded_file = st.file_uploader(
-        "**Drag and drop or click to browse files**",
+        "Choose a file",
         type=config['ALLOWED_FILE_TYPES'],
         help=f"Supported formats: {', '.join(config['ALLOWED_FILE_TYPES']).upper()}. Maximum file size: {config['MAX_FILE_SIZE_MB']}MB",
         label_visibility="collapsed"
     )
     
+    # Additional instructions with enhanced visibility
     st.markdown(f'''
-        <div class="upload-info">
-            📄 <strong>Supported formats:</strong> {', '.join(config['ALLOWED_FILE_TYPES']).upper()}<br>
-            📏 <strong>Maximum size:</strong> {config['MAX_FILE_SIZE_MB']}MB<br>
-            🔒 <strong>Security:</strong> All uploads are encrypted and logged
+        <div style="margin-top: 20px; padding: 20px; background-color: {COLORS['card']}; border-radius: 10px; border: 1px solid {COLORS['neutral']}20;">
+            <div style="font-size: 15px; color: {COLORS['text']} !important; font-weight: 600; margin-bottom: 12px;">
+                📝 Upload Instructions:
+            </div>
+            <div style="font-size: 14px; color: {COLORS['text_light']} !important; line-height: 1.6;">
+                <div style="margin-bottom: 8px;">1. Click the upload area above or drag and drop your file</div>
+                <div style="margin-bottom: 8px;">2. Supported formats: {', '.join(config['ALLOWED_FILE_TYPES']).upper()}</div>
+                <div style="margin-bottom: 8px;">3. Maximum file size: {config['MAX_FILE_SIZE_MB']}MB</div>
+                <div style="margin-bottom: 8px;">4. Your data is encrypted during transfer and storage</div>
+                <div>5. All uploads are logged for security audit purposes</div>
+            </div>
         </div>
     ''', unsafe_allow_html=True)
-    
-    st.markdown('</div>', unsafe_allow_html=True)
     
     if uploaded_file is not None:
         # Security check: File size
@@ -1130,46 +1335,46 @@ with tab1:
                 }
                 st.session_state.analysis_history.append(upload_event)
                 
-                # File info display
+                # File info display with enhanced visibility
                 st.markdown(f'''
                     <div class="g-card">
                         <div class="g-card-header">
                             <div>
-                                <h3 class="g-card-title">✅ File Uploaded Successfully</h3>
-                                <p class="g-card-subtitle">{uploaded_file.name}</p>
+                                <h3 class="g-card-title" style="color: {COLORS['success']} !important;">✅ File Uploaded Successfully</h3>
+                                <p class="g-card-subtitle" style="color: {COLORS['text_light']} !important;">{uploaded_file.name}</p>
                             </div>
-                            <span class="security-badge">🔐 Secured</span>
+                            <span class="security-badge" style="color: {COLORS['success']} !important;">🔐 Secured</span>
                         </div>
                         <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 16px;">
                             <div class="metric-card">
-                                <div class="metric-label">File Size</div>
-                                <div class="metric-value">{file_size_mb:.1f} MB</div>
+                                <div class="metric-label" style="color: {COLORS['text_light']} !important;">File Size</div>
+                                <div class="metric-value" style="color: {COLORS['text']} !important;">{file_size_mb:.1f} MB</div>
                             </div>
                             <div class="metric-card">
-                                <div class="metric-label">Rows</div>
-                                <div class="metric-value">{len(df):,}</div>
+                                <div class="metric-label" style="color: {COLORS['text_light']} !important;">Rows</div>
+                                <div class="metric-value" style="color: {COLORS['text']} !important;">{len(df):,}</div>
                             </div>
                             <div class="metric-card">
-                                <div class="metric-label">Columns</div>
-                                <div class="metric-value">{len(df.columns)}</div>
+                                <div class="metric-label" style="color: {COLORS['text_light']} !important;">Columns</div>
+                                <div class="metric-value" style="color: {COLORS['text']} !important;">{len(df.columns)}</div>
                             </div>
                             <div class="metric-card">
-                                <div class="metric-label">Status</div>
-                                <div class="metric-value">✓</div>
+                                <div class="metric-label" style="color: {COLORS['text_light']} !important;">Status</div>
+                                <div class="metric-value" style="color: {COLORS['success']} !important;">✓</div>
                             </div>
                         </div>
                     </div>
                 ''', unsafe_allow_html=True)
                 
-                # Data preview
+                # Data preview with enhanced visibility
                 st.markdown(f'''
                     <div class="g-card">
                         <div class="g-card-header">
                             <div>
-                                <h3 class="g-card-title">Data Preview</h3>
-                                <p class="g-card-subtitle">First 10 rows of uploaded data</p>
+                                <h3 class="g-card-title" style="color: {COLORS['text']} !important;">Data Preview</h3>
+                                <p class="g-card-subtitle" style="color: {COLORS['text_light']} !important;">First 10 rows of uploaded data</p>
                             </div>
-                            <div style="font-size: 12px; color: {COLORS['text_light']};">
+                            <div style="font-size: 12px; color: {COLORS['text_light']} !important;">
                                 Showing sample data
                             </div>
                         </div>
@@ -1178,13 +1383,13 @@ with tab1:
                 
                 st.dataframe(df.head(10), use_container_width=True, hide_index=True)
                 
-                # Column selection
+                # Column selection with enhanced visibility
                 st.markdown(f'''
                     <div class="g-card">
                         <div class="g-card-header">
                             <div>
-                                <h3 class="g-card-title">Analysis Configuration</h3>
-                                <p class="g-card-subtitle">Select the text column for sentiment analysis</p>
+                                <h3 class="g-card-title" style="color: {COLORS['text']} !important;">Analysis Configuration</h3>
+                                <p class="g-card-subtitle" style="color: {COLORS['text_light']} !important;">Select the text column for sentiment analysis</p>
                             </div>
                         </div>
                     </div>
@@ -1199,8 +1404,10 @@ with tab1:
                 
                 st.session_state.text_column = text_column
                 
-                # Additional options
+                # Additional options with enhanced visibility
                 with st.expander("⚙️ Advanced Options"):
+                    st.markdown(f"<div style='color: {COLORS['text']} !important; font-weight: 500; margin-bottom: 10px;'>Advanced Analysis Settings</div>", unsafe_allow_html=True)
+                    
                     sample_size = st.slider(
                         "Sample size (for testing)",
                         100, min(1000, len(df)), min(500, len(df)),
@@ -1213,7 +1420,7 @@ with tab1:
                         help="Add analysis timestamp to results"
                     )
                 
-                # Start analysis button
+                # Start analysis button with enhanced visibility
                 col1, col2, col3 = st.columns([1, 2, 1])
                 with col2:
                     if st.button("🚀 Start Secure Analysis", type="primary", use_container_width=True):
@@ -1250,13 +1457,13 @@ with tab2:
                 <div class="g-card">
                     <div class="g-card-header">
                         <div>
-                            <h3 class="g-card-title">📊 Ready for Analysis</h3>
-                            <p class="g-card-subtitle">
+                            <h3 class="g-card-title" style="color: {COLORS['text']} !important;">📊 Ready for Analysis</h3>
+                            <p class="g-card-subtitle" style="color: {COLORS['text_light']} !important;">
                                 Data loaded successfully ({len(st.session_state.df):,} rows).
                                 Click 'Start Secure Analysis' to begin processing.
                             </p>
                         </div>
-                        <span class="status-indicator status-inactive">Waiting</span>
+                        <span class="status-indicator status-inactive" style="color: {COLORS['neutral']} !important;">Waiting</span>
                     </div>
                 </div>
             ''', unsafe_allow_html=True)
@@ -1265,10 +1472,10 @@ with tab2:
                 <div class="g-card">
                     <div class="g-card-header">
                         <div>
-                            <h3 class="g-card-title">📁 No Data Available</h3>
-                            <p class="g-card-subtitle">Please upload data first using the Data Upload tab.</p>
+                            <h3 class="g-card-title" style="color: {COLORS['text']} !important;">📁 No Data Available</h3>
+                            <p class="g-card-subtitle" style="color: {COLORS['text_light']} !important;">Please upload data first using the Data Upload tab.</p>
                         </div>
-                        <span class="status-indicator status-warning">No Data</span>
+                        <span class="status-indicator status-warning" style="color: {COLORS['warning']} !important;">No Data</span>
                     </div>
                 </div>
             ''', unsafe_allow_html=True)
@@ -1277,10 +1484,10 @@ with tab2:
             <div class="g-card">
                 <div class="g-card-header">
                     <div>
-                        <h3 class="g-card-title">🔒 Secure Analysis in Progress</h3>
-                        <p class="g-card-subtitle">Processing: {st.session_state.file_name if st.session_state.file_name else 'your data'}</p>
+                        <h3 class="g-card-title" style="color: {COLORS['text']} !important;">🔒 Secure Analysis in Progress</h3>
+                        <p class="g-card-subtitle" style="color: {COLORS['text_light']} !important;">Processing: {st.session_state.file_name if st.session_state.file_name else 'your data'}</p>
                     </div>
-                    <span class="status-indicator status-active">● Running</span>
+                    <span class="status-indicator status-active" style="color: {COLORS['success']} !important;">● Running</span>
                 </div>
             </div>
         ''', unsafe_allow_html=True)
@@ -1307,9 +1514,9 @@ with tab2:
             
             # Update progress
             progress_bar.progress(target_progress)
-            status_text.text(step_text)
+            status_text.markdown(f"<div style='color: {COLORS['text']} !important; font-size: 14px;'>{step_text}</div>", unsafe_allow_html=True)
         
-        # Analysis completion
+        # Analysis completion with enhanced visibility
         st.success("✅ Analysis completed successfully! All data processed securely.")
         
         # Update session state
@@ -1324,7 +1531,7 @@ with tab2:
         }
         st.session_state.analysis_history.append(completion_event)
         
-        # Navigation to results
+        # Navigation to results with enhanced visibility
         col1, col2, col3 = st.columns([1, 2, 1])
         with col2:
             if st.button("📊 View Secure Results", type="primary", use_container_width=True):
@@ -1337,10 +1544,10 @@ with tab3:
                 <div class="g-card">
                     <div class="g-card-header">
                         <div>
-                            <h3 class="g-card-title">⏳ Analysis in Progress</h3>
-                            <p class="g-card-subtitle">Please wait for the analysis to complete.</p>
+                            <h3 class="g-card-title" style="color: {COLORS['text']} !important;">⏳ Analysis in Progress</h3>
+                            <p class="g-card-subtitle" style="color: {COLORS['text_light']} !important;">Please wait for the analysis to complete.</p>
                         </div>
-                        <span class="status-indicator status-warning">Processing</span>
+                        <span class="status-indicator status-warning" style="color: {COLORS['warning']} !important;">Processing</span>
                     </div>
                 </div>
             ''', unsafe_allow_html=True)
@@ -1349,10 +1556,10 @@ with tab3:
                 <div class="g-card">
                     <div class="g-card-header">
                         <div>
-                            <h3 class="g-card-title">🔍 Complete Analysis First</h3>
-                            <p class="g-card-subtitle">Complete the analysis to view results and export options.</p>
+                            <h3 class="g-card-title" style="color: {COLORS['text']} !important;">🔍 Complete Analysis First</h3>
+                            <p class="g-card-subtitle" style="color: {COLORS['text_light']} !important;">Complete the analysis to view results and export options.</p>
                         </div>
-                        <span class="status-indicator status-inactive">No Results</span>
+                        <span class="status-indicator status-inactive" style="color: {COLORS['neutral']} !important;">No Results</span>
                     </div>
                 </div>
             ''', unsafe_allow_html=True)
@@ -1362,17 +1569,17 @@ with tab3:
             <div class="g-card">
                 <div class="g-card-header">
                     <div>
-                        <h3 class="g-card-title">📈 Analysis Results</h3>
-                        <p class="g-card-subtitle">
+                        <h3 class="g-card-title" style="color: {COLORS['text']} !important;">📈 Analysis Results</h3>
+                        <p class="g-card-subtitle" style="color: {COLORS['text_light']} !important;">
                             Secure sentiment results summary
                         </p>
                     </div>
-                    <span class="status-indicator status-active">Completed</span>
+                    <span class="status-indicator status-active" style="color: {COLORS['success']} !important;">Completed</span>
                 </div>
             </div>
         ''', unsafe_allow_html=True)
 
-        # Mock sentiment distribution
+        # Mock sentiment distribution with enhanced visibility
         sentiment_data = pd.DataFrame({
             "Sentiment": ["Positive", "Neutral", "Negative"],
             "Count": [55, 25, 20]
@@ -1386,6 +1593,15 @@ with tab3:
             color_discrete_map=SENTIMENT_COLORS,
             hole=0.4
         )
+        
+        # Update chart text visibility
+        fig.update_layout(
+            font=dict(
+                family="Google Sans, Roboto, sans-serif",
+                size=14,
+                color=COLORS['text']
+            )
+        )
 
         st.plotly_chart(fig, use_container_width=True)
 
@@ -1394,8 +1610,8 @@ with tab3:
             <div class="g-card">
                 <div class="g-card-header">
                     <div>
-                        <h3 class="g-card-title">⬇️ Export Results</h3>
-                        <p class="g-card-subtitle">
+                        <h3 class="g-card-title" style="color: {COLORS['text']} !important;">⬇️ Export Results</h3>
+                        <p class="g-card-subtitle" style="color: {COLORS['text_light']} !important;">
                             Download securely processed results
                         </p>
                     </div>
@@ -1434,21 +1650,22 @@ with tab3:
 
         # ==================== AUDIT LOG ====================
         with st.expander("🧾 View Audit Log"):
+            st.markdown(f"<div style='color: {COLORS['text']} !important; font-weight: 500; margin-bottom: 10px;'>Activity History</div>", unsafe_allow_html=True)
             audit_df = pd.DataFrame(st.session_state.analysis_history)
             if not audit_df.empty:
                 st.dataframe(audit_df, use_container_width=True)
             else:
                 st.info("No audit activity recorded yet")
         
-        # Results metrics
+        # Results metrics with enhanced visibility
         col1, col2, col3 = st.columns(3)
         
         with col1:
             st.markdown(f'''
                 <div class="metric-card">
-                    <div class="metric-label">Positive Sentiment</div>
-                    <div class="metric-value" style="color: {COLORS['success']};">65%</div>
-                    <div class="metric-status" style="color: {COLORS['success']};">
+                    <div class="metric-label" style="color: {COLORS['text_light']} !important;">Positive Sentiment</div>
+                    <div class="metric-value" style="color: {COLORS['success']} !important;">65%</div>
+                    <div class="metric-status" style="color: {COLORS['success']} !important;">
                         ↑ 12% from baseline
                     </div>
                 </div>
@@ -1457,9 +1674,9 @@ with tab3:
         with col2:
             st.markdown(f'''
                 <div class="metric-card">
-                    <div class="metric-label">Negative Sentiment</div>
-                    <div class="metric-value" style="color: {COLORS['danger']};">15%</div>
-                    <div class="metric-status" style="color: {COLORS['danger']};">
+                    <div class="metric-label" style="color: {COLORS['text_light']} !important;">Negative Sentiment</div>
+                    <div class="metric-value" style="color: {COLORS['danger']} !important;">15%</div>
+                    <div class="metric-status" style="color: {COLORS['danger']} !important;">
                         ↓ 5% from baseline
                     </div>
                 </div>
@@ -1468,21 +1685,21 @@ with tab3:
         with col3:
             st.markdown(f'''
                 <div class="metric-card">
-                    <div class="metric-label">Neutral Sentiment</div>
-                    <div class="metric-value" style="color: {COLORS['neutral']};">20%</div>
-                    <div class="metric-status" style="color: {COLORS['neutral']};">
+                    <div class="metric-label" style="color: {COLORS['text_light']} !important;">Neutral Sentiment</div>
+                    <div class="metric-value" style="color: {COLORS['neutral']} !important;">20%</div>
+                    <div class="metric-status" style="color: {COLORS['neutral']} !important;">
                         → Stable trend
                     </div>
                 </div>
             ''', unsafe_allow_html=True)
         
-        # Sentiment chart
+        # Sentiment chart with enhanced visibility
         st.markdown(f'''
             <div class="g-card">
                 <div class="g-card-header">
                     <div>
-                        <h3 class="g-card-title">Sentiment Distribution</h3>
-                        <p class="g-card-subtitle">Based on {len(st.session_state.df):,} analyzed records</p>
+                        <h3 class="g-card-title" style="color: {COLORS['text']} !important;">Sentiment Distribution</h3>
+                        <p class="g-card-subtitle" style="color: {COLORS['text_light']} !important;">Based on {len(st.session_state.df):,} analyzed records</p>
                     </div>
                 </div>
             </div>
@@ -1502,9 +1719,13 @@ with tab3:
             showlegend=True,
             paper_bgcolor='rgba(0,0,0,0)',
             plot_bgcolor='rgba(0,0,0,0)',
-            font=dict(family="Google Sans, Roboto, sans-serif", size=14),
+            font=dict(
+                family="Google Sans, Roboto, sans-serif", 
+                size=14,
+                color=COLORS['text']
+            ),
             legend=dict(
-                font=dict(size=13),
+                font=dict(size=13, color=COLORS['text']),
                 orientation="h",
                 yanchor="bottom",
                 y=-0.2,
@@ -1519,251 +1740,24 @@ with tab3:
             <div class="g-card">
                 <div class="g-card-header">
                     <div>
-                        <h3 class="g-card-title">📤 Secure Export Options</h3>
-                        <p class="g-card-subtitle">Download analysis results securely. All exports are encrypted and logged.</p>
+                        <h3 class="g-card-title" style="color: {COLORS['text']} !important;">📤 Secure Export Options</h3>
+                        <p class="g-card-subtitle" style="color: {COLORS['text_light']} !important;">Download analysis results securely. All exports are encrypted and logged.</p>
                     </div>
                 </div>
             </div>
         ''', unsafe_allow_html=True)
         
-        # Export cards layout
+        # Export cards layout with enhanced visibility
         col1, col2 = st.columns(2)
         
         with col1:
             st.markdown(f'''
                 <div class="export-card">
                     <div class="export-icon">📊</div>
-                    <div class="export-title">Summary Report</div>
-                    <div class="export-description">
+                    <div class="export-title" style="color: {COLORS['text']} !important;">Summary Report</div>
+                    <div class="export-description" style="color: {COLORS['text_light']} !important;">
                         Comprehensive analysis summary with key metrics, insights, and recommendations.
                         Includes sentiment distribution and performance indicators.
                     </div>
-                    <div class="export-security">
-                        🔐 Encrypted CSV • Timestamped • Audit Trail Included
-                    </div>
-                </div>
-            ''', unsafe_allow_html=True)
-            
-            # Export Summary Button
-            if st.button("📥 Export Summary Report", key="export_summary_btn", use_container_width=True):
-                # Generate summary data
-                summary_data = {
-                    "Report Type": ["Sentiment Analysis Summary"],
-                    "Generated By": [st.session_state.username],
-                    "Generation Date": [datetime.now().strftime("%Y-%m-%d %H:%M:%S")],
-                    "Total Records": [len(st.session_state.df) if st.session_state.df is not None else 0],
-                    "Positive Sentiment (%)": ["65"],
-                    "Negative Sentiment (%)": ["15"],
-                    "Neutral Sentiment (%)": ["20"],
-                    "Average Confidence": ["82%"],
-                    "Analysis Engine": [analysis_mode],
-                    "Session ID": [st.session_state.session_id],
-                    "Deployment Mode": [DEPLOYMENT_MODE]
-                }
-                
-                summary_df = pd.DataFrame(summary_data)
-                csv_data = summary_df.to_csv(index=False)
-                
-                # Log export
-                export_event = {
-                    'timestamp': datetime.now().isoformat(),
-                    'username': st.session_state.username,
-                    'export_type': 'summary_report',
-                    'filename': f"sentiment_summary_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv"
-                }
-                st.session_state.export_history.append(export_event)
-                
-                # Download button
-                st.download_button(
-                    label="⬇️ Download Secure CSV",
-                    data=csv_data,
-                    file_name=export_event['filename'],
-                    mime="text/csv",
-                    key="download_summary_csv",
-                    use_container_width=True
-                )
-                
-                st.success(f"✅ Summary report generated! Download started.")
-        
-        with col2:
-            st.markdown(f'''
-                <div class="export-card">
-                    <div class="export-icon">📈</div>
-                    <div class="export-title">Detailed Analysis</div>
-                    <div class="export-description">
-                        Complete dataset with sentiment scores, confidence metrics, and analysis metadata.
-                        Includes all original data plus analysis results.
-                    </div>
-                    <div class="export-security">
-                        🔐 Full Dataset • Sentiment Scores • Confidence Levels
-                    </div>
-                </div>
-            ''', unsafe_allow_html=True)
-            
-            # Export Detailed Analysis Button
-            if st.button("📥 Export Detailed Analysis", key="export_detailed_btn", use_container_width=True):
-                if st.session_state.df is not None and st.session_state.text_column:
-                    # Create detailed analysis dataset
-                    detailed_df = st.session_state.df.copy()
-                    
-                    # Add analysis columns
-                    np.random.seed(42)  # For consistent results
-                    detailed_df['sentiment_score'] = np.random.uniform(-1, 1, size=len(detailed_df)).round(3)
-                    detailed_df['sentiment_category'] = np.where(
-                        detailed_df['sentiment_score'] > 0.3, 'Positive',
-                        np.where(detailed_df['sentiment_score'] < -0.3, 'Negative', 'Neutral')
-                    )
-                    detailed_df['confidence_score'] = np.random.uniform(0.6, 0.98, size=len(detailed_df)).round(2)
-                    detailed_df['analysis_timestamp'] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-                    detailed_df['analysis_engine'] = analysis_mode
-                    detailed_df['analyzed_by'] = st.session_state.username
-                    
-                    csv_data = detailed_df.to_csv(index=False)
-                    
-                    # Log export
-                    export_event = {
-                        'timestamp': datetime.now().isoformat(),
-                        'username': st.session_state.username,
-                        'export_type': 'detailed_analysis',
-                        'filename': f"detailed_analysis_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv",
-                        'records': len(detailed_df)
-                    }
-                    st.session_state.export_history.append(export_event)
-                    
-                    # Download button
-                    st.download_button(
-                        label="⬇️ Download Full Analysis",
-                        data=csv_data,
-                        file_name=export_event['filename'],
-                        mime="text/csv",
-                        key="download_detailed_csv",
-                        use_container_width=True
-                    )
-                    
-                    st.success(f"✅ Detailed analysis exported ({len(detailed_df):,} records)!")
-                else:
-                    st.warning("No data available for detailed export.")
-        
-        # Additional export options
-        st.markdown("---")
-        st.markdown(f'''
-            <div class="g-card">
-                <div class="g-card-header">
-                    <div>
-                        <h3 class="g-card-title">🔧 Advanced Export Options</h3>
-                        <p class="g-card-subtitle">Additional export formats and specialized reports</p>
-                    </div>
-                </div>
-            </div>
-        ''', unsafe_allow_html=True)
-        
-        col1, col2 = st.columns(2)
-        
-        with col1:
-            if st.button("📋 Export Sample Data", key="export_samples_btn", use_container_width=True):
-                if st.session_state.df is not None and st.session_state.text_column:
-                    # Create sample data
-                    sample_size = min(50, len(st.session_state.df))
-                    sample_df = st.session_state.df.head(sample_size).copy()
-                    
-                    # Add analysis
-                    sample_df['predicted_sentiment'] = np.random.choice(
-                        ['Positive', 'Neutral', 'Negative'], size=len(sample_df)
-                    )
-                    sample_df['confidence'] = np.random.uniform(0.7, 0.95, size=len(sample_df)).round(2)
-                    
-                    csv_data = sample_df.to_csv(index=False)
-                    
-                    # Log export
-                    export_event = {
-                        'timestamp': datetime.now().isoformat(),
-                        'username': st.session_state.username,
-                        'export_type': 'sample_data',
-                        'filename': f"sample_data_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv",
-                        'sample_size': sample_size
-                    }
-                    st.session_state.export_history.append(export_event)
-                    
-                    st.download_button(
-                        label="⬇️ Download Sample Data",
-                        data=csv_data,
-                        file_name=export_event['filename'],
-                        mime="text/csv",
-                        key="download_samples_csv",
-                        use_container_width=True
-                    )
-                    
-                    st.success(f"✅ Sample data exported ({sample_size} records)!")
-        
-        with col2:
-            if st.button("📊 Export Chart Data", key="export_chartdata_btn", use_container_width=True):
-                # Create comprehensive chart data
-                chart_data = pd.DataFrame({
-                    'sentiment_level': ['Very Positive', 'Positive', 'Neutral', 'Negative', 'Very Negative'],
-                    'percentage': [25, 40, 20, 10, 5],
-                    'count': [250, 400, 200, 100, 50],
-                    'avg_confidence': [0.92, 0.85, 0.78, 0.82, 0.88],
-                    'analysis_date': datetime.now().strftime("%Y-%m-%d")
-                })
-                
-                csv_data = chart_data.to_csv(index=False)
-                
-                # Log export
-                export_event = {
-                    'timestamp': datetime.now().isoformat(),
-                    'username': st.session_state.username,
-                    'export_type': 'chart_data',
-                    'filename': f"chart_data_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv"
-                }
-                st.session_state.export_history.append(export_event)
-                
-                st.download_button(
-                    label="⬇️ Download Chart Data",
-                    data=csv_data,
-                    file_name=export_event['filename'],
-                    mime="text/csv",
-                    key="download_chartdata_csv",
-                    use_container_width=True
-                )
-                
-                st.success("✅ Chart data exported successfully!")
-        
-        # Export history (for admins)
-        if st.session_state.user_role == 'admin' and st.session_state.export_history:
-            st.markdown("---")
-            with st.expander("📋 Export History (Admin Only)"):
-                if st.session_state.export_history:
-                    history_df = pd.DataFrame(st.session_state.export_history)
-                    st.dataframe(history_df, use_container_width=True)
-                else:
-                    st.info("No export history available.")
-
-# ==================== FOOTER ====================
-st.markdown("---")
-st.markdown(f'''
-    <div style="text-align: center; color: {COLORS['text_light']}; font-size: 12px; padding: 20px 0;">
-        <div style="margin-bottom: 8px;">
-            <strong>{APP_NAME} v{APP_VERSION}</strong> • {DEPLOYMENT_MODE.upper()} MODE • SECURE SESSION
-        </div>
-        <div style="display: flex; justify-content: center; gap: 30px; margin-bottom: 8px; font-size: 11px;">
-            <span>User: {st.session_state.username}</span>
-            <span>Role: {st.session_state.user_role.upper()}</span>
-            <span>Session: {st.session_state.session_id}</span>
-        </div>
-        <div style="font-size: 11px; color: {COLORS['neutral']};">
-            © 2024 Secure Sentiment Analysis Dashboard • All rights reserved • Unauthorized access prohibited
-        </div>
-    </div>
-''', unsafe_allow_html=True)
-
-# Deployment mode indicator
-if DEPLOYMENT_MODE != 'development':
-    st.markdown(f'''
-        <div style="position: fixed; bottom: 10px; right: 10px; z-index: 9999;">
-            <div style="background: {'#34A853' if DEPLOYMENT_MODE == 'production' else '#FBBC05'}; 
-                        color: white; padding: 6px 14px; border-radius: 16px; 
-                        font-size: 11px; font-weight: 600; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
-                🔒 {DEPLOYMENT_MODE.upper()} • SECURE
-            </div>
-        </div>
-    ''', unsafe_allow_html=True)
+                    <div class="export-security" style="color: {COLORS['text_light']} !important;">
+                        🔐
