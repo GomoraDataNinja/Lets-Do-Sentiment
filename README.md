@@ -2,10 +2,7 @@
 
 This project focuses on analyzing qualitative data to understand how customers feel about content they encounter online.
 
-The application processes unstructured and semi-structured data from
-• Excel files
-• CSV files
-• Text files
+The application processes unstructured and semi-structured data from, Excel files ,CSV files ,Text files
 
 The goal is simple.
 Turn raw text into clear insights about customer sentiment.
@@ -18,13 +15,11 @@ Qualitative data is hard to analyze at scale.
 Most feedback lives in text form and gets ignored or skimmed.
 
 This project helps by
-• Extracting meaning from customer opinions
-• Identifying emotional patterns in feedback
-• Supporting faster, data-driven decisions
+#• Extracting meaning from customer opinions
+#• Identifying emotional patterns in feedback
+#• Supporting faster, data-driven decisions
 
 A non-technical user can upload a file and immediately see how customers feel overall.
-
----
 
 ## How It Works
 
