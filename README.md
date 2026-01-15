@@ -1,5 +1,6 @@
 ## Project Overview
 
+
 This project focuses on analyzing qualitative data to understand how customers feel about content they encounter online.
 
 The application processes unstructured and semi-structured data from, Excel files ,CSV files ,Text files
