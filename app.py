@@ -1357,17 +1357,88 @@ with tab3:
                 </div>
             ''', unsafe_allow_html=True)
     else:
+        # ==================== RESULTS OVERVIEW ====================
         st.markdown(f'''
             <div class="g-card">
                 <div class="g-card-header">
                     <div>
                         <h3 class="g-card-title">📈 Analysis Results</h3>
-                        <p class="g-card-subtitle">Secure sentiment analysis insights based on your data</p>
+                        <p class="g-card-subtitle">
+                            Secure sentiment results summary
+                        </p>
                     </div>
-                    <span class="status-indicator status-active">● Complete</span>
+                    <span class="status-indicator status-active">Completed</span>
                 </div>
             </div>
         ''', unsafe_allow_html=True)
+
+        # Mock sentiment distribution
+        sentiment_data = pd.DataFrame({
+            "Sentiment": ["Positive", "Neutral", "Negative"],
+            "Count": [55, 25, 20]
+        })
+
+        fig = px.pie(
+            sentiment_data,
+            names="Sentiment",
+            values="Count",
+            color="Sentiment",
+            color_discrete_map=SENTIMENT_COLORS,
+            hole=0.4
+        )
+
+        st.plotly_chart(fig, use_container_width=True)
+
+        # ==================== EXPORT SECTION ====================
+        st.markdown(f'''
+            <div class="g-card">
+                <div class="g-card-header">
+                    <div>
+                        <h3 class="g-card-title">⬇️ Export Results</h3>
+                        <p class="g-card-subtitle">
+                            Download securely processed results
+                        </p>
+                    </div>
+                </div>
+            </div>
+        ''', unsafe_allow_html=True)
+
+        col1, col2, col3 = st.columns(3)
+
+        with col1:
+            if st.button("Export CSV", use_container_width=True):
+                st.session_state.export_history.append({
+                    "timestamp": datetime.now().isoformat(),
+                    "user": st.session_state.username,
+                    "format": "csv"
+                })
+                st.success("CSV export recorded")
+
+        with col2:
+            if st.button("Export Excel", use_container_width=True):
+                st.session_state.export_history.append({
+                    "timestamp": datetime.now().isoformat(),
+                    "user": st.session_state.username,
+                    "format": "excel"
+                })
+                st.success("Excel export recorded")
+
+        with col3:
+            if st.button("Export Summary Report", use_container_width=True):
+                st.session_state.export_history.append({
+                    "timestamp": datetime.now().isoformat(),
+                    "user": st.session_state.username,
+                    "format": "summary"
+                })
+                st.success("Summary export recorded")
+
+        # ==================== AUDIT LOG ====================
+        with st.expander("🧾 View Audit Log"):
+            audit_df = pd.DataFrame(st.session_state.analysis_history)
+            if not audit_df.empty:
+                st.dataframe(audit_df, use_container_width=True)
+            else:
+                st.info("No audit activity recorded yet")
         
         # Results metrics
         col1, col2, col3 = st.columns(3)
