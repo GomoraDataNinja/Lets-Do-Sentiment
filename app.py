@@ -82,7 +82,7 @@ st.set_page_config(
         **Security:** Password protected
         **Features:** File upload, sentiment analysis, export
         
-        © 2024 All rights reserved.
+        © 2026 All rights reserved.
         '''
     }
 )
@@ -1988,3 +1988,4 @@ if DEPLOYMENT_MODE != 'development':
             </div>
         </div>
     ''', unsafe_allow_html=True)
+
