@@ -1972,7 +1972,7 @@ st.markdown(f'''
             <span>Session: {st.session_state.session_id}</span>
         </div>
         <div style="font-size: 11px; color: {COLORS['neutral']} !important;">
-            © 2024 Secure Sentiment Analysis Dashboard • All rights reserved • Unauthorized access prohibited
+            © 2026 Secure Sentiment Analysis Dashboard • All rights reserved • Unauthorized access prohibited
         </div>
     </div>
 ''', unsafe_allow_html=True)
@@ -1988,4 +1988,5 @@ if DEPLOYMENT_MODE != 'development':
             </div>
         </div>
     ''', unsafe_allow_html=True)
+
 
