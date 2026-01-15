@@ -145,7 +145,7 @@ st.set_page_config(
         **Security:** Password protected
         **Features:** File upload, sentiment analysis, export
         
-        © 2024 All rights reserved.
+        © 2026 All rights reserved.
         '''
     }
 )
@@ -1958,7 +1958,7 @@ st.markdown(f'''
             <span>Session: {st.session_state.session_id}</span>
         </div>
         <div style="font-size: 11px; color: var(--neutral-color);">
-            © 2024 Secure Sentiment Analysis Dashboard • All rights reserved • Unauthorized access prohibited
+            © 2026 Secure Sentiment Analysis Dashboard • All rights reserved • Unauthorized access prohibited
         </div>
     </div>
 ''', unsafe_allow_html=True)
@@ -1986,3 +1986,4 @@ with st.sidebar:
             st.session_state.current_theme = new_theme
             COLORS = get_theme_colors(new_theme)
             safe_rerun()
+
