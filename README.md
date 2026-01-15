@@ -33,6 +33,7 @@ It groups opinions by sentiment.
 You get a clear picture instead of noise.
 
 No manual sorting.
+
 No guesswork.
 
 ## Key Capabilities
