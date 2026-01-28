@@ -10,14 +10,12 @@ from datetime import datetime
 
 warnings.filterwarnings("ignore")
 
-# ==================== COMPATIBILITY HELPER ====================
 def safe_rerun():
     try:
         st.rerun()
     except AttributeError:
         st.experimental_rerun()
 
-# ==================== APP CONFIG ====================
 DEPLOYMENT_MODE = os.environ.get("DEPLOYMENT_MODE", "development")
 APP_VERSION = "2.1.4"
 APP_NAME = "Sentiment Analysis Dashboard"
@@ -36,7 +34,6 @@ def load_config():
 
 config = load_config()
 
-# ==================== THEME COLORS (SIMPLE) ====================
 def get_theme_colors(theme: str):
     if theme == "dark":
         return {
@@ -76,7 +73,6 @@ SENTIMENT_COLORS = {
     "Negative": "#EA4335",
 }
 
-# ==================== SECURITY HELPERS ====================
 def hash_password(password: str) -> str:
     return hashlib.sha256(password.encode()).hexdigest()
 
@@ -91,7 +87,6 @@ def check_session_timeout() -> bool:
             return True
     return False
 
-# ==================== PAGE CONFIG ====================
 st.set_page_config(
     page_title=f"{APP_NAME} v{APP_VERSION}",
     page_icon="icon.png",
@@ -110,7 +105,6 @@ Features: Upload, analysis, export
     },
 )
 
-# ==================== SESSION STATE INIT ====================
 if "authenticated" not in st.session_state:
     st.session_state.authenticated = False
 if "username" not in st.session_state:
@@ -146,7 +140,6 @@ for k, v in default_states.items():
 
 COLORS = get_theme_colors(st.session_state.current_theme)
 
-# ==================== STYLES (LOGIN MATCHES YOUR EXAMPLE) ====================
 st.markdown(
     f"""
 <style>
@@ -180,13 +173,14 @@ st.markdown(
 footer {{ visibility: hidden; }}
 .stDeployButton {{ display: none; }}
 
-/* Login screen */
+/* Login screen (moved closer to the top) */
 .login-container {{
     display:flex;
     justify-content:center;
-    align-items:center;
+    align-items:flex-start;
     min-height:100vh;
     padding: 2rem;
+    padding-top: 6vh;
     background: linear-gradient(135deg, #1a237e 0%, #0d47a1 100%);
 }}
 .login-card {{
@@ -352,7 +346,6 @@ footer {{ visibility: hidden; }}
     unsafe_allow_html=True,
 )
 
-# ==================== AUTH ====================
 def check_password(username: str, password: str):
     username = (username or "").strip().lower()
 
@@ -469,7 +462,6 @@ def show_login_page():
 
     st.markdown("</div></div>", unsafe_allow_html=True)
 
-# ==================== SECURITY MIDDLEWARE ====================
 if st.session_state.authenticated and check_session_timeout():
     st.warning("Session timed out. Sign in again.")
     st.stop()
@@ -481,7 +473,6 @@ if not st.session_state.authenticated:
     show_login_page()
     st.stop()
 
-# ==================== HEADER ====================
 st.markdown(
     f"""
 <div class="header-container">
@@ -510,7 +501,6 @@ with top_b:
     if st.button("Secure Logout", use_container_width=True):
         logout()
 
-# ==================== SIDEBAR (SIMPLE) ====================
 with st.sidebar:
     st.markdown("### Settings")
 
@@ -544,7 +534,6 @@ with st.sidebar:
         st.session_state.results_df = None
         safe_rerun()
 
-# ==================== SIMPLE SENTIMENT ====================
 def simple_sentiment_score(text: str) -> float:
     if not isinstance(text, str) or not text.strip():
         return 0.0
@@ -566,7 +555,7 @@ def run_sentiment(df: pd.DataFrame, text_col: str, threshold: float, engine: str
 
     if engine == "TextBlob":
         try:
-            from textblob import TextBlob  # optional dependency
+            from textblob import TextBlob
             out["sentiment_score"] = series.apply(lambda x: float(TextBlob(x).sentiment.polarity))
         except Exception:
             out["sentiment_score"] = series.apply(simple_sentiment_score)
@@ -584,7 +573,6 @@ def run_sentiment(df: pd.DataFrame, text_col: str, threshold: float, engine: str
     out["analyzed_by"] = st.session_state.username
     return out
 
-# ==================== TWO TABS ONLY ====================
 tab_upload, tab_results = st.tabs(["Data Upload", "Results and Export"])
 
 with tab_upload:
@@ -726,7 +714,10 @@ with tab_upload:
                             for label, pct in steps:
                                 time.sleep(0.25)
                                 progress.progress(pct)
-                                status.markdown(f"<div style='color: var(--text); font-weight: 700;'>{label}</div>", unsafe_allow_html=True)
+                                status.markdown(
+                                    f"<div style='color: var(--text); font-weight: 700;'>{label}</div>",
+                                    unsafe_allow_html=True,
+                                )
 
                             results = run_sentiment(
                                 df=df_to_use,
@@ -781,7 +772,13 @@ with tab_results:
     else:
         res = st.session_state.results_df
 
-        counts = res["sentiment_category"].value_counts().reindex(["Positive", "Neutral", "Negative"]).fillna(0).astype(int)
+        counts = (
+            res["sentiment_category"]
+            .value_counts()
+            .reindex(["Positive", "Neutral", "Negative"])
+            .fillna(0)
+            .astype(int)
+        )
         total = int(len(res))
         pos_pct = int(round((counts.get("Positive", 0) / total) * 100)) if total else 0
         neu_pct = int(round((counts.get("Neutral", 0) / total) * 100)) if total else 0
@@ -894,7 +891,6 @@ with tab_results:
             unsafe_allow_html=True,
         )
 
-        # Summary export
         summary = pd.DataFrame(
             {
                 "Report Type": ["Sentiment Analysis Summary"],
@@ -945,7 +941,6 @@ with tab_results:
             else:
                 st.dataframe(audit_df, use_container_width=True, hide_index=True)
 
-# ==================== FOOTER ====================
 st.markdown("---")
 st.markdown(
     f"""
